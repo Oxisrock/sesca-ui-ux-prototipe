@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios | SES C.A.</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@700;800;900&family=Noto+Sans+SC:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ses: { red: '#D91F26', darkred: '#991b1b', black: '#0F172A', gray: '#F1F5F9', steel: '#64748B' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans SC', 'sans-serif'],
+                        display: ['Montserrat', 'Noto Sans SC', 'sans-serif']
+                    },
+                    backgroundImage: {
+                        'services-hero': "linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2070')"
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-50 text-slate-800 font-sans antialiased">
+
+    <nav class="fixed w-full z-50 bg-ses-black border-b border-gray-800 py-3 shadow-lg">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="bg-white p-1 rounded-sm h-12 w-auto flex items-center justify-center overflow-hidden">
+                    <img src="logo.png" alt="Logo SES C.A." class="h-full w-auto object-contain">
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-display font-black text-xl text-white leading-none tracking-tight">SES<span
+                            class="text-ses-red">.CA</span></span>
+                    <span class="text-[9px] uppercase tracking-widest text-gray-400 font-bold"
+                        data-i18n="tagline_logo">Servicios Especializados</span>
+                </div>
+            </a>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="index.html"
+                    class="text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-white transition"
+                    data-i18n="nav_home">Inicio</a>
+                <a href="about.html"
+                    class="text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-white transition"
+                    data-i18n="nav_about">Nosotros</a>
+                <a href="services.html"
+                    class="text-xs font-bold uppercase tracking-widest text-white border-b-2 border-ses-red pb-1"
+                    data-i18n="nav_services">Servicios</a>
+
+                <div class="relative group py-2">
+                    <button
+                        class="flex items-center gap-1 text-xs font-bold text-gray-300 hover:text-white transition uppercase tracking-widest border border-white/20 px-3 py-1 rounded hover:border-ses-red">
+                        <i class="fa-solid fa-globe text-ses-red"></i> <span id="current-lang">ES</span> <i
+                            class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
+                    </button>
+                    <div
+                        class="absolute right-0 mt-0 w-36 bg-white rounded-sm shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right z-50">
+                        <div class="py-1">
+                            <button onclick="changeLanguage('es')"
+                                class="w-full text-left px-4 py-2 text-xs text-gray-700 hover:bg-ses-red hover:text-white transition flex items-center"><span
+                                    class="mr-2">🇪🇸</span> Español</button>
+                            <button onclick="changeLanguage('en')"
+                                class="w-full text-left px-4 py-2 text-xs text-gray-700 hover:bg-ses-red hover:text-white transition flex items-center"><span
+                                    class="mr-2">🇺🇸</span> English</button>
+                            <button onclick="changeLanguage('pt')"
+                                class="w-full text-left px-4 py-2 text-xs text-gray-700 hover:bg-ses-red hover:text-white transition flex items-center"><span
+                                    class="mr-2">🇧🇷</span> Português</button>
+                            <button onclick="changeLanguage('ru')"
+                                class="w-full text-left px-4 py-2 text-xs text-gray-700 hover:bg-ses-red hover:text-white transition flex items-center"><span
+                                    class="mr-2">🇷🇺</span> Русский</button>
+                            <button onclick="changeLanguage('cn')"
+                                class="w-full text-left px-4 py-2 text-xs text-gray-700 hover:bg-ses-red hover:text-white transition flex items-center"><span
+                                    class="mr-2">🇨🇳</span> 中文</button>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="contact.html"
+                    class="bg-ses-red text-white px-5 py-2.5 font-bold text-xs uppercase tracking-widest rounded hover:bg-white hover:text-ses-red transition duration-300"
+                    data-i18n="nav_contact">Contacto</a>
+            </div>
+
+            <button id="mobile-btn" class="md:hidden text-white text-xl"><i class="fa-solid fa-bars"></i></button>
+        </div>
+
+        <div id="mobile-menu"
+            class="fixed inset-0 bg-ses-black/95 z-40 hidden flex-col items-center justify-center space-y-8 backdrop-blur-md">
+            <a href="index.html" class="text-xl font-bold text-gray-400 hover:text-white"
+                data-i18n="nav_home">Inicio</a>
+            <a href="about.html" class="text-xl font-bold text-gray-400 hover:text-white"
+                data-i18n="nav_about">Nosotros</a>
+            <a href="services.html" class="text-xl font-bold text-white" data-i18n="nav_services">Servicios</a>
+            <div class="flex gap-4">
+                <button onclick="changeLanguage('es')" class="text-2xl grayscale hover:grayscale-0">🇪🇸</button>
+                <button onclick="changeLanguage('en')" class="text-2xl grayscale hover:grayscale-0">🇺🇸</button>
+                <button onclick="changeLanguage('pt')" class="text-2xl grayscale hover:grayscale-0">🇧🇷</button>
+                <button onclick="changeLanguage('ru')" class="text-2xl grayscale hover:grayscale-0">🇷🇺</button>
+                <button onclick="changeLanguage('cn')" class="text-2xl grayscale hover:grayscale-0">🇨🇳</button>
+            </div>
+            <a href="contact.html" class="text-xl font-bold text-ses-red" data-i18n="nav_contact">Contacto</a>
+            <button id="close-menu" class="absolute top-6 right-6 text-white text-2xl"><i
+                    class="fa-solid fa-xmark"></i></button>
+        </div>
+    </nav>
+
+    <header class="pt-40 pb-24 bg-services-hero bg-cover bg-center text-white text-center relative">
+        <div class="max-w-4xl mx-auto px-6 relative z-10" data-aos="fade-down">
+            <span class="text-ses-red font-bold uppercase tracking-[0.3em] text-xs mb-4 block"
+                data-i18n="hero_tag">Portafolio de Soluciones</span>
+            <h1 class="text-4xl md:text-6xl font-display font-black uppercase tracking-tight mb-6"
+                data-i18n="hero_title">
+                Capacidades <br> Técnicas
+            </h1>
+            <p class="text-gray-300 text-lg max-w-2xl mx-auto font-light leading-relaxed" data-i18n="hero_desc">
+                Ejecutamos proyectos de alta complejidad bajo los más estrictos estándares de calidad (ASME, API, AWS) y
+                seguridad industrial.
+            </p>
+        </div>
+        <div class="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-gray-50 to-transparent"></div>
+    </header>
+
+    <section class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-6 space-y-24">
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center" data-aos="fade-up">
+                <div class="order-2 lg:order-1">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fa-solid fa-fire-flame-curved text-3xl text-ses-red"></i>
+                        <h2 class="text-3xl font-display font-black text-ses-black" data-i18n="serv1_title">Soldadura
+                            Especializada</h2>
+                    </div>
+                    <p class="text-gray-600 mb-6 leading-relaxed" data-i18n="serv1_desc">
+                        Nuestro core business. Contamos con soldadores calificados (WPQ) y procedimientos (WPS/PQR) para
+                        unir cualquier tipo de aleación metálica, garantizando la integridad estructural.
+                    </p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-ses-red mt-1"></i><span
+                                class="text-sm text-gray-700" data-i18n="serv1_p1"><strong>Procesos:</strong> SMAW, GTAW
+                                (TIG), GMAW, FCAW.</span></li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-ses-red mt-1"></i><span
+                                class="text-sm text-gray-700" data-i18n="serv1_p2"><strong>Materiales:</strong> Carbono,
+                                Inoxidable, Duplex, Aleaciones.</span></li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-ses-red mt-1"></i><span
+                                class="text-sm text-gray-700" data-i18n="serv1_p3"><strong>Normas:</strong> ASME B31.3,
+                                API 1104.</span></li>
+                    </ul>
+                    <a href="contact.html"
+                        class="text-ses-red font-bold text-sm uppercase tracking-widest hover:text-ses-black transition"
+                        data-i18n="btn_wps">Solicitar WPS/PQR &rarr;</a>
+                </div>
+                <div class="order-1 lg:order-2 relative group">
+                    <div class="absolute inset-0 bg-ses-black/10 group-hover:bg-transparent transition duration-500">
+                    </div>
+                    <img src="services.jpg" class="w-full h-80 object-cover rounded-sm shadow-xl" alt="Welding">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center" data-aos="fade-up">
+                <div class="order-2 lg:order-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fa-solid fa-screwdriver-wrench text-3xl text-ses-red"></i>
+                        <h2 class="text-3xl font-display font-black text-ses-black" data-i18n="serv2_title">
+                            Mantenimiento Mayor</h2>
+                    </div>
+                    <p class="text-gray-600 mb-6 leading-relaxed" data-i18n="serv2_desc">
+                        Intervención de equipos estáticos y rotativos durante paradas de planta. Maximizamos la
+                        disponibilidad operativa de sus activos.
+                    </p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-ses-red mt-1"></i><span
+                                class="text-sm text-gray-700" data-i18n="serv2_p1"><strong>Equipos:</strong>
+                                Intercambiadores, Hornos, Calderas.</span></li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-ses-red mt-1"></i><span
+                                class="text-sm text-gray-700" data-i18n="serv2_p2"><strong>Tanques:</strong> Reparación
+                                según API 653.</span></li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-ses-red mt-1"></i><span
+                                class="text-sm text-gray-700" data-i18n="serv2_p3"><strong>Estructuras:</strong>
+                                Sandblasting y Pintura.</span></li>
+                    </ul>
+                    <a href="contact.html"
+                        class="text-ses-red font-bold text-sm uppercase tracking-widest hover:text-ses-black transition"
+                        data-i18n="btn_consult">Consultar Disponibilidad &rarr;</a>
+                </div>
+                <div class="order-1 lg:order-1 relative group">
+                    <div class="absolute inset-0 bg-ses-black/10 group-hover:bg-transparent transition duration-500">
+                    </div>
+                    <img src="home.png" class="w-full h-80 object-cover rounded-sm shadow-xl" alt="Maintenance">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center" data-aos="fade-up">
+                <div class="order-2 lg:order-1">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fa-solid fa-industry text-3xl text-ses-red"></i>
+                        <h2 class="text-3xl font-display font-black text-ses-black" data-i18n="serv3_title">Fabricación
+                            & Montaje</h2>
+                    </div>
+                    <p class="text-gray-600 mb-6 leading-relaxed" data-i18n="serv3_desc">
+                        Desde la prefabricación en nuestro taller controlado hasta el izamiento y montaje en sitio.
+                        Soluciones llave en mano.
+                    </p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-ses-red mt-1"></i><span
+                                class="text-sm text-gray-700" data-i18n="serv3_p1"><strong>Spools:</strong>
+                                Prefabricación de tuberías.</span></li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-ses-red mt-1"></i><span
+                                class="text-sm text-gray-700" data-i18n="serv3_p2"><strong>Estructuras:</strong> Naves,
+                                Soportes, Racks.</span></li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-check text-ses-red mt-1"></i><span
+                                class="text-sm text-gray-700" data-i18n="serv3_p3"><strong>Montaje:</strong> Maniobras
+                                de izaje.</span></li>
+                    </ul>
+                    <a href="contact.html"
+                        class="text-ses-red font-bold text-sm uppercase tracking-widest hover:text-ses-black transition"
+                        data-i18n="btn_projects">Ver Proyectos &rarr;</a>
+                </div>
+                <div class="order-1 lg:order-2 relative group">
+                    <div class="absolute inset-0 bg-ses-black/10 group-hover:bg-transparent transition duration-500">
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=2069"
+                        class="w-full h-80 object-cover rounded-sm shadow-xl" alt="Fabrication">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="py-20 bg-ses-black text-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <h3 class="text-2xl font-display font-bold mb-10 text-center" data-i18n="comp_title">Servicios
+                Complementarios</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-900 p-8 border border-gray-800 hover:border-ses-red transition rounded-sm">
+                    <i class="fa-solid fa-magnifying-glass-chart text-ses-red text-2xl mb-4"></i>
+                    <h4 class="font-bold text-lg mb-2" data-i18n="comp1_title">Ensayos No Destructivos</h4>
+                    <p class="text-gray-400 text-sm" data-i18n="comp1_desc">Inspección Visual (VT), Líquidos Penetrantes
+                        (PT), Ultrasonido (UT).</p>
+                </div>
+                <div class="bg-gray-900 p-8 border border-gray-800 hover:border-ses-red transition rounded-sm">
+                    <i class="fa-solid fa-helmet-safety text-ses-red text-2xl mb-4"></i>
+                    <h4 class="font-bold text-lg mb-2" data-i18n="comp2_title">Consultoría Técnica</h4>
+                    <p class="text-gray-400 text-sm" data-i18n="comp2_desc">Elaboración de Dossiers de Calidad y
+                        Asesoría en Materiales.</p>
+                </div>
+                <div class="bg-gray-900 p-8 border border-gray-800 hover:border-ses-red transition rounded-sm">
+                    <i class="fa-solid fa-truck-field text-ses-red text-2xl mb-4"></i>
+                    <h4 class="font-bold text-lg mb-2" data-i18n="comp3_title">Logística de Campo</h4>
+                    <p class="text-gray-400 text-sm" data-i18n="comp3_desc">Suministro de cuadrillas, transporte y
+                        alquiler de equipos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-ses-red text-white text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl font-display font-black mb-6" data-i18n="cta_title">Garantía de Calidad Total</h2>
+            <p class="text-lg text-white/90 mb-10" data-i18n="cta_desc">
+                Todos nuestros servicios incluyen la entrega de un Dossier de Calidad final con certificados y reportes.
+            </p>
+            <a href="contact.html"
+                class="inline-block bg-white text-ses-red px-10 py-4 font-bold uppercase tracking-widest hover:bg-ses-black hover:text-white transition duration-300 shadow-xl"
+                data-i18n="cta_btn">
+                Solicitar Cotización
+            </a>
+        </div>
+    </section>
+
+    <footer class="bg-ses-black text-white pt-16 pb-8 border-t border-gray-800 text-sm">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div class="col-span-1">
+                <div class="flex items-center gap-2 mb-6">
+                    <img src="logo.png" alt="Logo SES Footer" class="h-8 w-auto grayscale opacity-80">
+                    <span class="font-display font-black text-xl">SES C.A.</span>
+                </div>
+                <p class="text-gray-500 leading-relaxed" data-i18n="footer_desc">Especialistas en soldadura industrial y
+                    montaje mecánico. Calidad ASME y seguridad certificada.</p>
+            </div>
+
+            <div>
+                <h4 class="font-bold uppercase tracking-widest mb-6 text-gray-300 text-xs" data-i18n="nav_about">Empresa
+                </h4>
+                <ul class="space-y-3 text-gray-500">
+                    <li><a href="index.html" class="hover:text-ses-red transition" data-i18n="nav_home">Inicio</a></li>
+                    <li><a href="about.html" class="hover:text-ses-red transition" data-i18n="nav_about">Nosotros</a>
+                    </li>
+                    <li><a href="services.html" class="hover:text-ses-red transition"
+                            data-i18n="nav_services">Servicios</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-bold uppercase tracking-widest mb-6 text-gray-300 text-xs" data-i18n="nav_services">
+                    Servicios</h4>
+                <ul class="space-y-3 text-gray-500">
+                    <li><a href="#" class="hover:text-ses-red transition">Soldadura TIG/MIG</a></li>
+                    <li><a href="#" class="hover:text-ses-red transition" data-i18n="footer_maint">Mantenimiento</a>
+                    </li>
+                    <li><a href="#" class="hover:text-ses-red transition" data-i18n="footer_fab">Fabricación</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-bold uppercase tracking-widest mb-6 text-gray-300 text-xs" data-i18n="nav_contact">
+                    Contacto</h4>
+                <ul class="space-y-3 text-gray-500">
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-phone text-ses-red"></i> +58 269 000 0000
+                    </li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-envelope text-ses-red"></i> info@sesca.com
+                    </li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-location-dot text-ses-red"></i> Falcón,
+                        Venezuela</li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 pt-8 text-center text-gray-600 text-xs">
+            <p>&copy; 2026 Servicios Especializados en Soldadura C.A. (SES C.A.) - <span data-i18n="rights">Todos los
+                    derechos reservados.</span></p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, offset: 50, duration: 800 });
+
+        // === TRADUCCIONES ===
+        const translations = {
+            es: {
+                tagline_logo: "Servicios Especializados", nav_home: "Inicio", nav_about: "Nosotros", nav_services: "Servicios", nav_contact: "Contacto",
+                hero_tag: "Portafolio de Soluciones", hero_title: "Capacidades Técnicas", hero_desc: "Ejecutamos proyectos de alta complejidad bajo los más estrictos estándares de calidad (ASME, API, AWS) y seguridad industrial.",
+                serv1_title: "Soldadura Especializada", serv1_desc: "Nuestro core business. Contamos con soldadores calificados (WPQ) y procedimientos (WPS/PQR) para unir cualquier tipo de aleación metálica.",
+                serv1_p1: "<strong>Procesos:</strong> SMAW, GTAW (TIG), GMAW, FCAW.", serv1_p2: "<strong>Materiales:</strong> Carbono, Inoxidable, Duplex.", serv1_p3: "<strong>Normas:</strong> ASME B31.3, API 1104.", btn_wps: "Solicitar WPS/PQR →",
+                serv2_title: "Mantenimiento Mayor", serv2_desc: "Intervención de equipos estáticos y rotativos durante paradas de planta. Maximizamos la disponibilidad operativa.",
+                serv2_p1: "<strong>Equipos:</strong> Intercambiadores, Hornos.", serv2_p2: "<strong>Tanques:</strong> Reparación según API 653.", serv2_p3: "<strong>Estructuras:</strong> Sandblasting y Pintura.", btn_consult: "Consultar Disponibilidad →",
+                serv3_title: "Fabricación & Montaje", serv3_desc: "Desde la prefabricación en taller hasta el izamiento y montaje en sitio. Soluciones llave en mano.",
+                serv3_p1: "<strong>Spools:</strong> Prefabricación de tuberías.", serv3_p2: "<strong>Estructuras:</strong> Naves, Soportes, Racks.", serv3_p3: "<strong>Montaje:</strong> Maniobras de izaje.", btn_projects: "Ver Proyectos →",
+                comp_title: "Servicios Complementarios", comp1_title: "Ensayos No Destructivos", comp1_desc: "Inspección Visual, Líquidos Penetrantes, Ultrasonido.",
+                comp2_title: "Consultoría Técnica", comp2_desc: "Dossiers de Calidad y Asesoría en Materiales.", comp3_title: "Logística de Campo", comp3_desc: "Suministro de cuadrillas y equipos.",
+                cta_title: "Garantía de Calidad Total", cta_desc: "Todos nuestros servicios incluyen la entrega de un Dossier de Calidad final con certificados y reportes.", cta_btn: "Solicitar Cotización",
+                footer_desc: "Especialistas en soldadura industrial. Calidad ASME.", footer_maint: "Mantenimiento", footer_fab: "Fabricación", rights: "Todos los derechos reservados."
+            },
+            en: {
+                tagline_logo: "Specialized Services", nav_home: "Home", nav_about: "About Us", nav_services: "Services", nav_contact: "Contact",
+                hero_tag: "Solutions Portfolio", hero_title: "Technical Capabilities", hero_desc: "We execute high-complexity projects under the strictest quality (ASME, API, AWS) and safety standards.",
+                serv1_title: "Specialized Welding", serv1_desc: "Our core business. We have qualified welders (WPQ) and procedures (WPS/PQR) to join any type of metal alloy.",
+                serv1_p1: "<strong>Processes:</strong> SMAW, GTAW (TIG), GMAW, FCAW.", serv1_p2: "<strong>Materials:</strong> Carbon, Stainless, Duplex.", serv1_p3: "<strong>Codes:</strong> ASME B31.3, API 1104.", btn_wps: "Request WPS/PQR →",
+                serv2_title: "Major Maintenance", serv2_desc: "Intervention of static and rotating equipment during plant shutdowns. We maximize operational availability.",
+                serv2_p1: "<strong>Equipment:</strong> Exchangers, Furnaces.", serv2_p2: "<strong>Tanks:</strong> Repair per API 653.", serv2_p3: "<strong>Structures:</strong> Sandblasting & Painting.", btn_consult: "Check Availability →",
+                serv3_title: "Fabrication & Assembly", serv3_desc: "From shop prefabrication to lifting and field assembly. Turnkey solutions.",
+                serv3_p1: "<strong>Spools:</strong> Pipe prefabrication.", serv3_p2: "<strong>Structures:</strong> Sheds, Supports, Racks.", serv3_p3: "<strong>Assembly:</strong> Lifting maneuvers.", btn_projects: "See Projects →",
+                comp_title: "Complementary Services", comp1_title: "Non-Destructive Testing", comp1_desc: "Visual Inspection, Dye Penetrant, Ultrasound.",
+                comp2_title: "Technical Consulting", comp2_desc: "Quality Dossiers and Material Selection.", comp3_title: "Field Logistics", comp3_desc: "Crew supply and equipment rental.",
+                cta_title: "Total Quality Guarantee", cta_desc: "All our services include a final Quality Dossier with certificates and reports.", cta_btn: "Request Quote",
+                footer_desc: "Industrial welding specialists. ASME Quality.", footer_maint: "Maintenance", footer_fab: "Fabrication", rights: "All rights reserved."
+            },
+            pt: {
+                tagline_logo: "Serviços Especializados", nav_home: "Início", nav_about: "Sobre Nós", nav_services: "Serviços", nav_contact: "Contato",
+                hero_tag: "Portfólio de Soluções", hero_title: "Capacidades Técnicas", hero_desc: "Executamos projetos de alta complexidade sob os mais rigorosos padrões de qualidade (ASME, API, AWS) e segurança.",
+                serv1_title: "Soldagem Especializada", serv1_desc: "Nosso negócio principal. Contamos com soldadores qualificados (WPQ) e procedimentos (WPS/PQR) para unir qualquer liga.",
+                serv1_p1: "<strong>Processos:</strong> SMAW, TIG, MIG/MAG.", serv1_p2: "<strong>Materiais:</strong> Carbono, Inoxidável, Duplex.", serv1_p3: "<strong>Normas:</strong> ASME B31.3, API 1104.", btn_wps: "Solicitar WPS/PQR →",
+                serv2_title: "Manutenção Maior", serv2_desc: "Intervenção em equipamentos estáticos e rotativos. Maximizamos a disponibilidade operacional.",
+                serv2_p1: "<strong>Equipamentos:</strong> Trocadores, Fornos.", serv2_p2: "<strong>Tanques:</strong> Reparo conf. API 653.", serv2_p3: "<strong>Estruturas:</strong> Jateamento e Pintura.", btn_consult: "Consultar Disponibilidade →",
+                serv3_title: "Fabricação e Montagem", serv3_desc: "Da prefabricação em oficina ao içamento e montagem em campo. Soluções chave na mão.",
+                serv3_p1: "<strong>Spools:</strong> Prefabricação de tubos.", serv3_p2: "<strong>Estruturas:</strong> Galpões, Suportes.", serv3_p3: "<strong>Montagem:</strong> Manobras de içamento.", btn_projects: "Ver Projetos →",
+                comp_title: "Serviços Complementares", comp1_title: "Ensaios Não Destrutivos", comp1_desc: "Inspeção Visual, Líquidos Penetrantes, Ultrassom.",
+                comp2_title: "Consultoria Técnica", comp2_desc: "Dossiês de Qualidade e Seleção de Materiais.", comp3_title: "Logística de Campo", comp3_desc: "Fornecimento de equipes e equipamentos.",
+                cta_title: "Garantia de Qualidade Total", cta_desc: "Todos os serviços incluem um Dossiê de Qualidade final com certificados.", cta_btn: "Solicitar Cotação",
+                footer_desc: "Especialistas em soldagem. Qualidade ASME.", footer_maint: "Manutenção", footer_fab: "Fabricação", rights: "Todos os direitos reservados."
+            },
+            ru: {
+                tagline_logo: "Спец. Услуги", nav_home: "Главная", nav_about: "О нас", nav_services: "Услуги", nav_contact: "Контакты",
+                hero_tag: "Портфель решений", hero_title: "Технические возможности", hero_desc: "Мы выполняем сложные проекты в соответствии со строжайшими стандартами качества (ASME, API) и безопасности.",
+                serv1_title: "Спец. Сварка", serv1_desc: "Наш основной бизнес. Квалифицированные сварщики и процедуры для сварки любых сплавов.",
+                serv1_p1: "<strong>Процессы:</strong> SMAW, TIG, MIG/MAG.", serv1_p2: "<strong>Материалы:</strong> Углерод, Нерж, Дуплекс.", serv1_p3: "<strong>Коды:</strong> ASME B31.3, API 1104.", btn_wps: "Запросить WPS/PQR →",
+                serv2_title: "Капитальный Ремонт", serv2_desc: "Обслуживание оборудования во время остановок завода. Максимизируем эксплуатационную готовность.",
+                serv2_p1: "<strong>Оборудование:</strong> Теплообменники, Печи.", serv2_p2: "<strong>Резервуары:</strong> Ремонт по API 653.", serv2_p3: "<strong>Структуры:</strong> Пескоструй и Покраска.", btn_consult: "Проверить доступность →",
+                serv3_title: "Производство и Монтаж", serv3_desc: "От заводского изготовления до полевого монтажа. Решения под ключ.",
+                serv3_p1: "<strong>Спулы:</strong> Префабрикация труб.", serv3_p2: "<strong>Структуры:</strong> Опоры, Эстакады.", serv3_p3: "<strong>Монтаж:</strong> Подъемные работы.", btn_projects: "Смотреть проекты →",
+                comp_title: "Доп. Услуги", comp1_title: "Неразрушающий контроль", comp1_desc: "Визуальный, Капиллярный, Ультразвук.",
+                comp2_title: "Тех. Консалтинг", comp2_desc: "Досье качества и подбор материалов.", comp3_title: "Полевая Логистика", comp3_desc: "Поставка бригад и оборудования.",
+                cta_title: "Гарантия Качества", cta_desc: "Все услуги включают финальное Досье Качества с сертификатами.", cta_btn: "Запросить цену",
+                footer_desc: "Спец. по сварке. Качество ASME.", footer_maint: "Обслуживание", footer_fab: "Производство", rights: "Все права защищены."
+            },
+            cn: {
+                tagline_logo: "专业服务", nav_home: "首页", nav_about: "关于", nav_services: "服务", nav_contact: "联系",
+                hero_tag: "解决方案", hero_title: "技术能力", hero_desc: "我们按照最严格的质量（ASME、API）和安全标准执行高复杂度项目。",
+                serv1_title: "特种焊接", serv1_desc: "我们的核心业务。拥有合格的焊工和程序，可焊接任何合金。",
+                serv1_p1: "<strong>工艺：</strong> SMAW, TIG, MIG/MAG.", serv1_p2: "<strong>材料：</strong> 碳钢, 不锈钢, 双相钢.", serv1_p3: "<strong>标准：</strong> ASME B31.3, API 1104.", btn_wps: "索取 WPS/PQR →",
+                serv2_title: "主要维护", serv2_desc: "工厂停工期间的设备干预。最大化运营可用性。",
+                serv2_p1: "<strong>设备：</strong> 换热器, 熔炉.", serv2_p2: "<strong>储罐：</strong> API 653 维修.", serv2_p3: "<strong>结构：</strong> 喷砂与喷漆.", btn_consult: "查询可用性 →",
+                serv3_title: "制造与安装", serv3_desc: "从车间预制到现场安装。交钥匙解决方案。",
+                serv3_p1: "<strong>管轴：</strong> 管道预制.", serv3_p2: "<strong>结构：</strong> 支架, 管廊.", serv3_p3: "<strong>安装：</strong> 起重作业.", btn_projects: "查看项目 →",
+                comp_title: "补充服务", comp1_title: "无损检测", comp1_desc: "目视, 渗透, 超声波.",
+                comp2_title: "技术咨询", comp2_desc: "质量档案与材料选择.", comp3_title: "现场物流", comp3_desc: "人员与设备供应.",
+                cta_title: "全面质量保证", cta_desc: "所有服务均包含最终质量档案和证书。", cta_btn: "索取报价",
+                footer_desc: "焊接专家。ASME 质量。", footer_maint: "维护", footer_fab: "制造", rights: "版权所有。"
+            }
+        };
+
+        function changeLanguage(lang) {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key]; // innerHTML para que funcionen las etiquetas <strong>
+                }
+            });
+            document.getElementById('current-lang').innerText = lang.toUpperCase();
+        }
+
+        // Menú Móvil Logic
+        const mobileBtn = document.getElementById('mobile-btn');
+        const closeMenu = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        }
+
+        mobileBtn.addEventListener('click', toggleMenu);
+        closeMenu.addEventListener('click', toggleMenu);
+    </script>
+</body>
+
+</html>

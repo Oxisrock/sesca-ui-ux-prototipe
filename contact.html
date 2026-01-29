@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | SES C.A.</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@700;800;900&family=Noto+Sans+SC:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ses: { red: '#D91F26', darkred: '#991b1b', black: '#0F172A', gray: '#F1F5F9', steel: '#64748B' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans SC', 'sans-serif'],
+                        display: ['Montserrat', 'Noto Sans SC', 'sans-serif']
+                    },
+                    backgroundImage: {
+                        // IMAGEN MEJORADA: Ingenieros revisando planos en obra (más relevante para contacto)
+                        'contact-hero': "linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2070')"
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-50 text-slate-800 font-sans antialiased">
+
+    <nav class="fixed w-full z-50 bg-ses-black border-b border-gray-800 py-3 shadow-lg">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="bg-white p-1 rounded-sm h-12 w-auto flex items-center justify-center overflow-hidden">
+                    <img src="logo.png" alt="Logo SES C.A." class="h-full w-auto object-contain">
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-display font-black text-xl text-white leading-none tracking-tight">SES<span
+                            class="text-ses-red">.CA</span></span>
+                    <span class="text-[9px] uppercase tracking-widest text-gray-400 font-bold"
+                        data-i18n="tagline_logo">Servicios Especializados</span>
+                </div>
+            </a>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="index.html"
+                    class="text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-white transition"
+                    data-i18n="nav_home">Inicio</a>
+                <a href="about.html"
+                    class="text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-white transition"
+                    data-i18n="nav_about">Nosotros</a>
+                <a href="services.html"
+                    class="text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-white transition"
+                    data-i18n="nav_services">Servicios</a>
+
+                <div class="relative group py-2">
+                    <button
+                        class="flex items-center gap-1 text-xs font-bold text-gray-300 hover:text-white transition uppercase tracking-widest border border-white/20 px-3 py-1 rounded hover:border-ses-red">
+                        <i class="fa-solid fa-globe text-ses-red"></i> <span id="current-lang">ES</span> <i
+                            class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
+                    </button>
+                    <div
+                        class="absolute right-0 mt-0 w-36 bg-white rounded-sm shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right z-50">
+                        <div class="py-1">
+                            <button onclick="changeLanguage('es')"
+                                class="w-full text-left px-4 py-2 text-xs text-gray-700 hover:bg-ses-red hover:text-white transition flex items-center"><span
+                                    class="mr-2">🇪🇸</span> Español</button>
+                            <button onclick="changeLanguage('en')"
+                                class="w-full text-left px-4 py-2 text-xs text-gray-700 hover:bg-ses-red hover:text-white transition flex items-center"><span
+                                    class="mr-2">🇺🇸</span> English</button>
+                            <button onclick="changeLanguage('pt')"
+                                class="w-full text-left px-4 py-2 text-xs text-gray-700 hover:bg-ses-red hover:text-white transition flex items-center"><span
+                                    class="mr-2">🇧🇷</span> Português</button>
+                            <button onclick="changeLanguage('ru')"
+                                class="w-full text-left px-4 py-2 text-xs text-gray-700 hover:bg-ses-red hover:text-white transition flex items-center"><span
+                                    class="mr-2">🇷🇺</span> Русский</button>
+                            <button onclick="changeLanguage('cn')"
+                                class="w-full text-left px-4 py-2 text-xs text-gray-700 hover:bg-ses-red hover:text-white transition flex items-center"><span
+                                    class="mr-2">🇨🇳</span> 中文</button>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="contact.html"
+                    class="bg-ses-red text-white px-5 py-2.5 font-bold text-xs uppercase tracking-widest rounded hover:bg-white hover:text-ses-red transition duration-300 shadow-md"
+                    data-i18n="nav_contact">Contacto</a>
+            </div>
+
+            <button id="mobile-btn" class="md:hidden text-white text-xl"><i class="fa-solid fa-bars"></i></button>
+        </div>
+
+        <div id="mobile-menu"
+            class="fixed inset-0 bg-ses-black/95 z-40 hidden flex-col items-center justify-center space-y-8 backdrop-blur-md">
+            <a href="index.html" class="text-xl font-bold text-gray-400 hover:text-white"
+                data-i18n="nav_home">Inicio</a>
+            <a href="about.html" class="text-xl font-bold text-gray-400 hover:text-white"
+                data-i18n="nav_about">Nosotros</a>
+            <a href="services.html" class="text-xl font-bold text-gray-400 hover:text-white"
+                data-i18n="nav_services">Servicios</a>
+            <div class="flex gap-4">
+                <button onclick="changeLanguage('es')" class="text-2xl grayscale hover:grayscale-0">🇪🇸</button>
+                <button onclick="changeLanguage('en')" class="text-2xl grayscale hover:grayscale-0">🇺🇸</button>
+                <button onclick="changeLanguage('pt')" class="text-2xl grayscale hover:grayscale-0">🇧🇷</button>
+                <button onclick="changeLanguage('ru')" class="text-2xl grayscale hover:grayscale-0">🇷🇺</button>
+                <button onclick="changeLanguage('cn')" class="text-2xl grayscale hover:grayscale-0">🇨🇳</button>
+            </div>
+            <a href="contact.html" class="text-xl font-bold text-ses-red" data-i18n="nav_contact">Contacto</a>
+            <button id="close-menu" class="absolute top-6 right-6 text-white text-2xl"><i
+                    class="fa-solid fa-xmark"></i></button>
+        </div>
+    </nav>
+
+    <header class="pt-40 pb-20 bg-contact-hero bg-cover bg-center text-white text-center relative">
+        <div class="max-w-4xl mx-auto px-6 relative z-10" data-aos="fade-down">
+            <span class="text-ses-red font-bold uppercase tracking-[0.3em] text-xs mb-4 block"
+                data-i18n="hero_tag">Estamos a su servicio</span>
+            <h1 class="text-4xl md:text-6xl font-display font-black uppercase tracking-tight mb-6"
+                data-i18n="hero_title">
+                Hablemos de su <br>Proyecto
+            </h1>
+            <p class="text-gray-300 text-lg max-w-2xl mx-auto font-light leading-relaxed" data-i18n="hero_desc">
+                Nuestro departamento de ingeniería está disponible para atender requerimientos técnicos, licitaciones y
+                emergencias operativas.
+            </p>
+        </div>
+        <div class="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-gray-50 to-transparent"></div>
+    </header>
+
+    <section class="py-20 relative -mt-10 z-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="bg-white shadow-2xl rounded-sm overflow-hidden flex flex-col md:flex-row">
+
+                <div
+                    class="md:w-5/12 bg-ses-black text-white p-12 flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-ses-red/10 rounded-full blur-3xl"></div>
+
+                    <div>
+                        <h3 class="text-2xl font-display font-bold mb-8" data-i18n="info_title">Información de Contacto
+                        </h3>
+                        <p class="text-gray-400 text-sm mb-8 leading-relaxed" data-i18n="info_desc">
+                            Visite nuestras instalaciones o contáctenos por los canales oficiales. Atención
+                            personalizada para el sector industrial.
+                        </p>
+
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="w-10 h-10 rounded bg-gray-800 flex items-center justify-center flex-shrink-0 text-ses-red">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm uppercase text-gray-300" data-i18n="info_office">
+                                        Oficina Principal</h4>
+                                    <p class="text-sm text-gray-500 mt-1">Av. Intercomunal, Zona Industrial II,<br>Punto
+                                        Fijo, Falcón, Venezuela.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="w-10 h-10 rounded bg-gray-800 flex items-center justify-center flex-shrink-0 text-ses-red">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm uppercase text-gray-300" data-i18n="info_email">Correo
+                                        Electrónico</h4>
+                                    <p class="text-sm text-gray-500 mt-1"><a href="mailto:info@sesca.com"
+                                            class="hover:text-white transition">info@sesca.com</a></p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div
+                                    class="w-10 h-10 rounded bg-gray-800 flex items-center justify-center flex-shrink-0 text-ses-red">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm uppercase text-gray-300" data-i18n="info_phone">
+                                        Teléfonos</h4>
+                                    <p class="text-sm text-gray-500 mt-1">+58 269 000 0000</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-12">
+                        <p class="text-xs uppercase tracking-widest text-gray-500 mb-4" data-i18n="follow_us">Síguenos
+                        </p>
+                        <div class="flex gap-4">
+                            <a href="#"
+                                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-ses-red transition"><i
+                                    class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#"
+                                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-ses-red transition"><i
+                                    class="fa-brands fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:w-7/12 p-12 bg-white">
+                    <h3 class="text-2xl font-display font-bold text-ses-black mb-2" data-i18n="form_title">Envíenos un
+                        Mensaje</h3>
+                    <p class="text-gray-500 text-sm mb-8" data-i18n="form_desc">Responderemos a su solicitud en un plazo
+                        máximo de 24 horas hábiles.</p>
+
+                    <form action="https://formspree.io/f/TU_ID_AQUI" method="POST" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="relative">
+                                <label class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-1 block"
+                                    data-i18n="lbl_name">Nombre Completo</label>
+                                <input type="text" name="name"
+                                    class="w-full bg-gray-50 border border-gray-200 p-3 rounded-sm focus:outline-none focus:border-ses-red transition"
+                                    required>
+                            </div>
+                            <div class="relative">
+                                <label class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-1 block"
+                                    data-i18n="lbl_company">Empresa / Cargo</label>
+                                <input type="text" name="company"
+                                    class="w-full bg-gray-50 border border-gray-200 p-3 rounded-sm focus:outline-none focus:border-ses-red transition">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="relative">
+                                <label class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-1 block"
+                                    data-i18n="lbl_email">Correo Corporativo</label>
+                                <input type="email" name="email"
+                                    class="w-full bg-gray-50 border border-gray-200 p-3 rounded-sm focus:outline-none focus:border-ses-red transition"
+                                    required>
+                            </div>
+                            <div class="relative">
+                                <label class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-1 block"
+                                    data-i18n="lbl_phone">Teléfono</label>
+                                <input type="tel" name="phone"
+                                    class="w-full bg-gray-50 border border-gray-200 p-3 rounded-sm focus:outline-none focus:border-ses-red transition">
+                            </div>
+                        </div>
+
+                        <div class="relative">
+                            <label class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-1 block"
+                                data-i18n="lbl_req">Tipo de Requerimiento</label>
+                            <select name="service"
+                                class="w-full bg-gray-50 border border-gray-200 p-3 rounded-sm focus:outline-none focus:border-ses-red transition text-gray-600">
+                                <option value="cotizacion" data-i18n="opt_quote">Solicitud de Cotización</option>
+                                <option value="visita" data-i18n="opt_visit">Visita Técnica</option>
+                                <option value="empleo" data-i18n="opt_job">Bolsa de Trabajo</option>
+                                <option value="otro" data-i18n="opt_other">Otro</option>
+                            </select>
+                        </div>
+
+                        <div class="relative">
+                            <label class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-1 block"
+                                data-i18n="lbl_msg">Detalle del Proyecto</label>
+                            <textarea name="message" rows="4"
+                                class="w-full bg-gray-50 border border-gray-200 p-3 rounded-sm focus:outline-none focus:border-ses-red transition"
+                                required></textarea>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full bg-ses-red text-white font-bold py-4 px-8 uppercase tracking-widest hover:bg-ses-black transition duration-300 shadow-lg rounded-sm"
+                            data-i18n="btn_send">
+                            Enviar Solicitud
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="bg-white p-2 shadow-lg rounded-sm h-80 md:h-auto">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62638.64726219808!2d-70.20794105!3d11.71180865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e85038c62c9c22d%3A0x629c1c43f8736997!2sPunto%20Fijo%2C%20Falc%C3%B3n!5e0!3m2!1ses!2sve!4v1689000000000!5m2!1ses!2sve"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                        class="w-full h-full grayscale hover:grayscale-0 transition duration-700"></iframe>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-display font-bold text-ses-black mb-6" data-i18n="faq_title">Preguntas
+                        Frecuentes</h3>
+                    <div class="space-y-4">
+                        <div class="bg-white p-6 border border-gray-200 rounded-sm shadow-sm">
+                            <h4 class="font-bold text-ses-red mb-2 text-sm uppercase" data-i18n="faq_1_q">¿Realizan
+                                trabajos fuera de Falcón?</h4>
+                            <p class="text-gray-600 text-sm" data-i18n="faq_1_a">Sí, tenemos capacidad logística para
+                                movilizar cuadrillas y equipos a cualquier estado de Venezuela.</p>
+                        </div>
+                        <div class="bg-white p-6 border border-gray-200 rounded-sm shadow-sm">
+                            <h4 class="font-bold text-ses-red mb-2 text-sm uppercase" data-i18n="faq_2_q">¿Atienden
+                                emergencias 24/7?</h4>
+                            <p class="text-gray-600 text-sm" data-i18n="faq_2_a">Correcto. Disponemos de un equipo de
+                                guardia permanente para reparaciones críticas.</p>
+                        </div>
+                        <div class="bg-white p-6 border border-gray-200 rounded-sm shadow-sm">
+                            <h4 class="font-bold text-ses-red mb-2 text-sm uppercase" data-i18n="faq_3_q">¿Están
+                                inscritos en el RNC?</h4>
+                            <p class="text-gray-600 text-sm" data-i18n="faq_3_a">Sí, contamos con RNC actualizado,
+                                solvencias laborales y cumplimiento de normativas fiscales vigentes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-ses-black text-white pt-16 pb-8 border-t border-gray-800 text-sm">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div class="col-span-1">
+                <div class="flex items-center gap-2 mb-6">
+                    <img src="logo.png" alt="Logo SES Footer" class="h-8 w-auto grayscale opacity-80">
+                    <span class="font-display font-black text-xl">SES C.A.</span>
+                </div>
+                <p class="text-gray-500 leading-relaxed" data-i18n="footer_desc">Especialistas en soldadura industrial y
+                    montaje mecánico. Calidad ASME y seguridad certificada.</p>
+            </div>
+
+            <div>
+                <h4 class="font-bold uppercase tracking-widest mb-6 text-gray-300 text-xs" data-i18n="nav_about">Empresa
+                </h4>
+                <ul class="space-y-3 text-gray-500">
+                    <li><a href="index.html" class="hover:text-ses-red transition" data-i18n="nav_home">Inicio</a></li>
+                    <li><a href="about.html" class="hover:text-ses-red transition" data-i18n="nav_about">Nosotros</a>
+                    </li>
+                    <li><a href="services.html" class="hover:text-ses-red transition"
+                            data-i18n="nav_services">Servicios</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-bold uppercase tracking-widest mb-6 text-gray-300 text-xs" data-i18n="nav_services">
+                    Servicios</h4>
+                <ul class="space-y-3 text-gray-500">
+                    <li><a href="#" class="hover:text-ses-red transition">Soldadura TIG/MIG</a></li>
+                    <li><a href="#" class="hover:text-ses-red transition" data-i18n="footer_maint">Mantenimiento</a>
+                    </li>
+                    <li><a href="#" class="hover:text-ses-red transition" data-i18n="footer_fab">Fabricación</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-bold uppercase tracking-widest mb-6 text-gray-300 text-xs" data-i18n="nav_contact">
+                    Contacto</h4>
+                <ul class="space-y-3 text-gray-500">
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-phone text-ses-red"></i> +58 269 000 0000
+                    </li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-envelope text-ses-red"></i> info@sesca.com
+                    </li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-location-dot text-ses-red"></i> Falcón,
+                        Venezuela</li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 pt-8 text-center text-gray-600 text-xs">
+            <p>&copy; 2026 Servicios Especializados en Soldadura C.A. (SES C.A.) - <span data-i18n="rights">Todos los
+                    derechos reservados.</span></p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, offset: 50, duration: 800 });
+
+        // === TRADUCCIONES ===
+        const translations = {
+            es: {
+                tagline_logo: "Servicios Especializados", nav_home: "Inicio", nav_about: "Nosotros", nav_services: "Servicios", nav_contact: "Contacto",
+                hero_tag: "Estamos a su servicio", hero_title: "Hablemos de su <br>Proyecto", hero_desc: "Nuestro departamento de ingeniería está disponible para atender requerimientos técnicos, licitaciones y emergencias operativas.",
+                info_title: "Información de Contacto", info_desc: "Visite nuestras instalaciones o contáctenos por los canales oficiales. Atención personalizada para el sector industrial.",
+                info_office: "Oficina Principal", info_email: "Correo Electrónico", info_phone: "Teléfonos", follow_us: "Síguenos",
+                form_title: "Envíenos un Mensaje", form_desc: "Responderemos a su solicitud en un plazo máximo de 24 horas hábiles.",
+                lbl_name: "Nombre Completo", lbl_company: "Empresa / Cargo", lbl_email: "Correo Corporativo", lbl_phone: "Teléfono", lbl_req: "Tipo de Requerimiento", lbl_msg: "Detalle del Proyecto",
+                opt_quote: "Solicitud de Cotización", opt_visit: "Visita Técnica", opt_job: "Bolsa de Trabajo", opt_other: "Otro", btn_send: "Enviar Solicitud",
+                faq_title: "Preguntas Frecuentes",
+                faq_1_q: "¿Realizan trabajos fuera de Falcón?", faq_1_a: "Sí, tenemos capacidad logística para movilizar cuadrillas y equipos a cualquier estado de Venezuela.",
+                faq_2_q: "¿Atienden emergencias 24/7?", faq_2_a: "Correcto. Disponemos de un equipo de guardia permanente para reparaciones críticas.",
+                faq_3_q: "¿Están inscritos en el RNC?", faq_3_a: "Sí, contamos con RNC actualizado, solvencias laborales y cumplimiento de normativas fiscales vigentes.",
+                footer_desc: "Especialistas en soldadura industrial. Calidad ASME.", footer_maint: "Mantenimiento", footer_fab: "Fabricación", rights: "Todos los derechos reservados."
+            },
+            en: {
+                tagline_logo: "Specialized Services", nav_home: "Home", nav_about: "About Us", nav_services: "Services", nav_contact: "Contact",
+                hero_tag: "We are at your service", hero_title: "Let's Talk About <br>Your Project", hero_desc: "Our engineering department is available to attend to technical requirements, tenders, and operational emergencies.",
+                info_title: "Contact Information", info_desc: "Visit our facilities or contact us through official channels. Personalized attention for the industrial sector.",
+                info_office: "Headquarters", info_email: "Email Address", info_phone: "Phones", follow_us: "Follow Us",
+                form_title: "Send Us a Message", form_desc: "We will respond to your request within a maximum of 24 business hours.",
+                lbl_name: "Full Name", lbl_company: "Company / Position", lbl_email: "Corporate Email", lbl_phone: "Phone", lbl_req: "Requirement Type", lbl_msg: "Project Detail",
+                opt_quote: "Quote Request", opt_visit: "Technical Visit", opt_job: "Job Board", opt_other: "Other", btn_send: "Send Request",
+                faq_title: "Frequently Asked Questions",
+                faq_1_q: "Do you work outside Falcón?", faq_1_a: "Yes, we have the logistical capacity to mobilize crews and equipment to any state in Venezuela.",
+                faq_2_q: "Do you handle 24/7 emergencies?", faq_2_a: "Correct. We have a permanent on-call team for critical repairs.",
+                faq_3_q: "Are you registered in the RNC?", faq_3_a: "Yes, we have updated RNC, labor solvency, and compliance with current tax regulations.",
+                footer_desc: "Industrial welding specialists. ASME Quality.", footer_maint: "Maintenance", footer_fab: "Fabrication", rights: "All rights reserved."
+            },
+            pt: {
+                tagline_logo: "Serviços Especializados", nav_home: "Início", nav_about: "Sobre Nós", nav_services: "Serviços", nav_contact: "Contato",
+                hero_tag: "Estamos ao seu serviço", hero_title: "Vamos Falar do <br>Seu Projeto", hero_desc: "Nosso departamento de engenharia está disponível para atender requisitos técnicos, licitações e emergências operacionais.",
+                info_title: "Informações de Contato", info_desc: "Visite nossas instalações ou contate-nos pelos canais oficiais. Atendimento personalizado para o setor industrial.",
+                info_office: "Sede Principal", info_email: "Endereço de E-mail", info_phone: "Telefones", follow_us: "Siga-nos",
+                form_title: "Envie-nos uma Mensagem", form_desc: "Responderemos à sua solicitação em um prazo máximo de 24 horas úteis.",
+                lbl_name: "Nome Completo", lbl_company: "Empresa / Cargo", lbl_email: "E-mail Corporativo", lbl_phone: "Telefone", lbl_req: "Tipo de Requerimento", lbl_msg: "Detalhe do Projeto",
+                opt_quote: "Solicitação de Cotação", opt_visit: "Visita Técnica", opt_job: "Vagas de Emprego", opt_other: "Outro", btn_send: "Enviar Solicitação",
+                faq_title: "Perguntas Frequentes",
+                faq_1_q: "Realizam trabalhos fora de Falcón?", faq_1_a: "Sim, temos capacidade logística para mobilizar equipes e equipamentos para qualquer estado da Venezuela.",
+                faq_2_q: "Atendem emergências 24/7?", faq_2_a: "Correto. Dispomos de uma equipe de plantão permanente para reparos críticos.",
+                faq_3_q: "Estão inscritos no RNC?", faq_3_a: "Sim, contamos com RNC atualizado, solvência trabalhista e cumprimento das normas fiscais vigentes.",
+                footer_desc: "Especialistas em soldagem. Qualidade ASME.", footer_maint: "Manutenção", footer_fab: "Fabricação", rights: "Todos os direitos reservados."
+            },
+            ru: {
+                tagline_logo: "Спец. Услуги", nav_home: "Главная", nav_about: "О нас", nav_services: "Услуги", nav_contact: "Контакты",
+                hero_tag: "Мы к вашим услугам", hero_title: "Обсудим ваш <br>Проект", hero_desc: "Наш инженерный отдел готов рассмотреть технические требования, тендеры и оперативные чрезвычайные ситуации.",
+                info_title: "Контактная информация", info_desc: "Посетите наши объекты или свяжитесь с нами по официальным каналам.",
+                info_office: "Главный офис", info_email: "Электронная почта", info_phone: "Телефоны", follow_us: "Подписывайтесь",
+                form_title: "Отправить сообщение", form_desc: "Мы ответим на ваш запрос в течение максимум 24 рабочих часов.",
+                lbl_name: "ФИО", lbl_company: "Компания / Должность", lbl_email: "Корп. E-mail", lbl_phone: "Телефон", lbl_req: "Тип запроса", lbl_msg: "Детали проекта",
+                opt_quote: "Запрос цены", opt_visit: "Тех. визит", opt_job: "Вакансии", opt_other: "Другое", btn_send: "Отправить запрос",
+                faq_title: "Частые вопросы",
+                faq_1_q: "Работаете ли вы за пределами Фалькона?", faq_1_a: "Да, у нас есть логистические возможности для мобилизации бригад и оборудования в любой штат Венесуэлы.",
+                faq_2_q: "Обслуживаете ли вы аварии 24/7?", faq_2_a: "Верно. У нас есть постоянная дежурная бригада для критического ремонта.",
+                faq_3_q: "Зарегистрированы ли вы в RNC?", faq_3_a: "Да, у нас есть обновленный RNC и мы соблюдаем все налоговые нормы.",
+                footer_desc: "Спец. по сварке. Качество ASME.", footer_maint: "Обслуживание", footer_fab: "Производство", rights: "Все права защищены."
+            },
+            cn: {
+                tagline_logo: "专业服务", nav_home: "首页", nav_about: "关于", nav_services: "服务", nav_contact: "联系",
+                hero_tag: "我们为您服务", hero_title: "让我们谈谈 <br>您的项目", hero_desc: "我们的工程部门可处理技术要求、招标和运营紧急情况。",
+                info_title: "联系信息", info_desc: "访问我们的设施或通过官方渠道联系我们。为工业领域提供个性化服务。",
+                info_office: "总部", info_email: "电子邮件", info_phone: "电话", follow_us: "关注我们",
+                form_title: "发送消息", form_desc: "我们将在最多 24 个工作小时内回复您的请求。",
+                lbl_name: "全名", lbl_company: "公司 / 职位", lbl_email: "企业邮箱", lbl_phone: "电话", lbl_req: "需求类型", lbl_msg: "项目详情",
+                opt_quote: "报价请求", opt_visit: "技术访问", opt_job: "招聘", opt_other: "其他", btn_send: "发送请求",
+                faq_title: "常见问题",
+                faq_1_q: "你们在法尔孔以外的地方工作吗？", faq_1_a: "是的，我们有后勤能力将工作人员和设备调动到委内瑞拉的任何州。",
+                faq_2_q: "你们处理 24/7 紧急情况吗？", faq_2_a: "正确。我们有一支常备值班团队负责关键维修。",
+                faq_3_q: "你们在 RNC 注册了吗？", faq_3_a: "是的，我们拥有更新的 RNC、劳工偿付能力并遵守现行税收法规。",
+                footer_desc: "焊接专家。ASME 质量。", footer_maint: "维护", footer_fab: "制造", rights: "版权所有。"
+            }
+        };
+
+        function changeLanguage(lang) {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            document.getElementById('current-lang').innerText = lang.toUpperCase();
+        }
+
+        // Menú Móvil Logic
+        const mobileBtn = document.getElementById('mobile-btn');
+        const closeMenu = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        }
+
+        mobileBtn.addEventListener('click', toggleMenu);
+        closeMenu.addEventListener('click', toggleMenu);
+    </script>
+</body>
+
+</html>

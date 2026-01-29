@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SES C.A. | Ingeniería y Metalmecánica de Precisión</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@700;800;900&family=Noto+Sans+SC:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ses: {
+                            red: '#D91F26',
+                            darkred: '#991b1b',
+                            black: '#0F172A',
+                            gray: '#F1F5F9',
+                            steel: '#64748B'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans SC', 'sans-serif'],
+                        display: ['Montserrat', 'Noto Sans SC', 'sans-serif']
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "linear-gradient(to right bottom, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.6)), url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2070')",
+                        'stats-pattern': "linear-gradient(to right, rgba(217, 31, 38, 0.95), rgba(15, 23, 42, 0.95)), url('https://images.unsplash.com/photo-1535198463870-128c68c4d291?q=80&w=2070')"
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-white text-slate-800 font-sans antialiased selection:bg-ses-red selection:text-white">
+
+    <nav class="fixed w-full z-50 py-3 transition-all duration-300 border-b border-transparent" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+
+            <a href="index.html" class="flex items-center gap-3 group z-50">
+                <div class="bg-white/10 backdrop-blur-sm p-1 rounded-sm h-12 w-auto flex items-center justify-center border border-white/20 transition-all duration-300"
+                    id="logo-container">
+                    <img src="logo.png" alt="SES C.A. Logo" class="h-full w-auto object-contain">
+                </div>
+                <div class="flex flex-col">
+                    <span
+                        class="font-display font-black text-xl text-white leading-none tracking-tight transition-colors duration-300"
+                        id="logo-text">SES<span class="text-ses-red">.CA</span></span>
+                    <span
+                        class="text-[9px] uppercase tracking-widest text-gray-400 font-bold transition-colors duration-300"
+                        id="tagline-text" data-i18n="tagline_logo">Industrial Services</span>
+                </div>
+            </a>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="index.html"
+                    class="nav-link text-white font-bold text-xs uppercase tracking-widest hover:text-ses-red transition relative group"
+                    data-i18n="nav_home">
+                    Inicio
+                    <span
+                        class="absolute -bottom-2 left-0 w-full h-0.5 bg-ses-red transform scale-x-100 transition-transform"></span>
+                </a>
+                <a href="about.html"
+                    class="nav-link text-gray-300 font-bold text-xs uppercase tracking-widest hover:text-ses-red transition relative group"
+                    data-i18n="nav_about">
+                    Nosotros
+                    <span
+                        class="absolute -bottom-2 left-0 w-full h-0.5 bg-ses-red transform scale-x-0 group-hover:scale-x-100 transition-transform"></span>
+                </a>
+                <a href="services.html"
+                    class="nav-link text-gray-300 font-bold text-xs uppercase tracking-widest hover:text-ses-red transition relative group"
+                    data-i18n="nav_services">
+                    Servicios
+                    <span
+                        class="absolute -bottom-2 left-0 w-full h-0.5 bg-ses-red transform scale-x-0 group-hover:scale-x-100 transition-transform"></span>
+                </a>
+
+                <div class="relative group py-2">
+                    <button
+                        class="nav-link flex items-center gap-1 text-xs font-bold text-gray-300 hover:text-white transition uppercase tracking-widest border border-white/20 px-3 py-1 rounded hover:border-ses-red"
+                        id="lang-btn">
+                        <i class="fa-solid fa-globe text-ses-red"></i>
+                        <span id="current-lang">ES</span>
+                        <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
+                    </button>
+
+                    <div
+                        class="absolute right-0 mt-0 w-40 bg-white rounded-sm shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right z-50">
+                        <div class="py-1">
+                            <button onclick="changeLanguage('es')"
+                                class="w-full text-left flex items-center px-4 py-2 text-xs text-gray-700 hover:bg-ses-red hover:text-white transition border-l-2 border-transparent hover:border-red-900">
+                                <span class="mr-2 text-sm">🇪🇸</span> Español
+                            </button>
+                            <button onclick="changeLanguage('en')"
+                                class="w-full text-left flex items-center px-4 py-2 text-xs text-gray-700 hover:bg-ses-red hover:text-white transition border-l-2 border-transparent hover:border-red-900">
+                                <span class="mr-2 text-sm">🇺🇸</span> English
+                            </button>
+                            <button onclick="changeLanguage('pt')"
+                                class="w-full text-left flex items-center px-4 py-2 text-xs text-gray-700 hover:bg-ses-red hover:text-white transition border-l-2 border-transparent hover:border-red-900">
+                                <span class="mr-2 text-sm">🇧🇷</span> Português
+                            </button>
+                            <button onclick="changeLanguage('ru')"
+                                class="w-full text-left flex items-center px-4 py-2 text-xs text-gray-700 hover:bg-ses-red hover:text-white transition border-l-2 border-transparent hover:border-red-900">
+                                <span class="mr-2 text-sm">🇷🇺</span> Русский
+                            </button>
+                            <button onclick="changeLanguage('cn')"
+                                class="w-full text-left flex items-center px-4 py-2 text-xs text-gray-700 hover:bg-ses-red hover:text-white transition border-l-2 border-transparent hover:border-red-900">
+                                <span class="mr-2 text-sm">🇨🇳</span> 中文
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="contact.html"
+                    class="bg-ses-red text-white px-5 py-2 font-bold text-xs uppercase tracking-widest rounded shadow-lg hover:bg-red-700 hover:shadow-red-500/30 transform hover:-translate-y-1 transition duration-300"
+                    data-i18n="nav_contact">
+                    Cotizar
+                </a>
+            </div>
+
+            <button id="mobile-btn" class="md:hidden text-white text-2xl focus:outline-none z-50">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu"
+            class="fixed inset-0 bg-ses-black/95 z-40 hidden flex-col items-center justify-center space-y-8 backdrop-blur-md">
+            <a href="index.html" class="text-2xl font-display font-bold text-white uppercase tracking-wider"
+                data-i18n="nav_home">Inicio</a>
+            <a href="about.html"
+                class="text-2xl font-display font-bold text-gray-400 hover:text-white uppercase tracking-wider"
+                data-i18n="nav_about">Nosotros</a>
+            <a href="services.html"
+                class="text-2xl font-display font-bold text-gray-400 hover:text-white uppercase tracking-wider"
+                data-i18n="nav_services">Servicios</a>
+
+            <div class="flex gap-6 mt-4">
+                <button onclick="changeLanguage('es')"
+                    class="text-3xl grayscale hover:grayscale-0 transition">🇪🇸</button>
+                <button onclick="changeLanguage('en')"
+                    class="text-3xl grayscale hover:grayscale-0 transition">🇺🇸</button>
+                <button onclick="changeLanguage('pt')"
+                    class="text-3xl grayscale hover:grayscale-0 transition">🇧🇷</button>
+                <button onclick="changeLanguage('ru')"
+                    class="text-3xl grayscale hover:grayscale-0 transition">🇷🇺</button>
+                <button onclick="changeLanguage('cn')"
+                    class="text-3xl grayscale hover:grayscale-0 transition">🇨🇳</button>
+            </div>
+
+            <a href="contact.html"
+                class="mt-4 text-2xl font-display font-bold text-ses-red hover:text-white uppercase tracking-wider"
+                data-i18n="nav_contact">Contacto</a>
+            <button id="close-menu" class="absolute top-6 right-6 text-white text-3xl"><i
+                    class="fa-solid fa-xmark"></i></button>
+        </div>
+    </nav>
+
+    <header class="relative h-screen flex items-center bg-hero-pattern bg-cover bg-center bg-no-repeat bg-fixed">
+        <div class="relative z-10 max-w-7xl mx-auto px-6 w-full text-white pt-20">
+            <div data-aos="fade-up" data-aos-duration="1000">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="h-1 w-12 bg-ses-red"></div>
+                    <p class="text-ses-red font-bold uppercase tracking-[0.3em] text-xs md:text-sm"
+                        data-i18n="hero_tagline">Excelencia Operativa</p>
+                </div>
+
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-display font-black leading-tight mb-8 drop-shadow-2xl">
+                    <span data-i18n="hero_title_1">SOLIDEZ QUE</span> <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400"
+                        data-i18n="hero_title_2">CONSTRUYE FUTURO.</span>
+                </h1>
+
+                <p class="text-gray-300 text-lg md:text-xl font-light leading-relaxed mb-10 max-w-2xl border-l-2 border-ses-red pl-6 bg-black/20 backdrop-blur-sm py-4"
+                    data-i18n="hero_desc">
+                    Ingeniería de precisión, soldadura especializada y mantenimiento mayor para el sector Oil & Gas en
+                    Venezuela.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-5">
+                    <a href="services.html"
+                        class="text-center bg-ses-red hover:bg-white hover:text-ses-red text-white px-10 py-4 font-display font-black uppercase tracking-widest text-sm transition duration-300 shadow-xl shadow-red-900/20"
+                        data-i18n="hero_btn_1">
+                        Nuestras Capacidades
+                    </a>
+                    <a href="contact.html"
+                        class="text-center border border-white hover:bg-white hover:text-ses-black text-white px-10 py-4 font-display font-black uppercase tracking-widest text-sm transition duration-300 backdrop-blur-sm"
+                        data-i18n="hero_btn_2">
+                        Hablar con Ingeniería
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-white/50">
+            <i class="fa-solid fa-chevron-down text-2xl"></i>
+        </div>
+    </header>
+
+    <div class="bg-ses-black border-b border-gray-800 py-10 relative z-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <p class="text-center text-xs font-bold text-gray-500 uppercase tracking-[0.2em] mb-8"
+                data-i18n="standards_title">Estándares Internacionales</p>
+            <div
+                class="flex flex-wrap justify-center gap-12 md:gap-24 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                <div class="flex items-center gap-3 group"><i
+                        class="fa-solid fa-gear text-4xl text-white group-hover:text-ses-red transition"></i><span
+                        class="font-display font-black text-2xl text-white">ASME</span></div>
+                <div class="flex items-center gap-3 group"><i
+                        class="fa-solid fa-fire-burner text-4xl text-white group-hover:text-ses-red transition"></i><span
+                        class="font-display font-black text-2xl text-white">API</span></div>
+                <div class="flex items-center gap-3 group"><i
+                        class="fa-solid fa-certificate text-4xl text-white group-hover:text-ses-red transition"></i><span
+                        class="font-display font-black text-2xl text-white">ISO</span></div>
+            </div>
+        </div>
+    </div>
+
+    <section class="py-24 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <div data-aos="fade-right">
+                    <span class="text-ses-red font-bold uppercase tracking-widest text-xs" data-i18n="about_tag">Sobre
+                        SES C.A.</span>
+                    <h2 class="text-4xl md:text-5xl font-display font-black text-ses-black mt-4 mb-8 leading-tight">
+                        <span data-i18n="about_title_1">Líderes en Metalmecánica</span> <br><span class="text-ses-red"
+                            data-i18n="about_title_2">de Alta Precisión.</span>
+                    </h2>
+                    <p class="text-slate-600 text-lg leading-relaxed mb-6" data-i18n="about_desc">
+                        Con más de 15 años de experiencia, ofrecemos la tranquilidad de la precisión absoluta. Desde
+                        nuestra sede en Falcón, desplegamos equipos de alto rendimiento para proyectos críticos en toda
+                        Venezuela.
+                    </p>
+                    <div class="space-y-6 mt-8">
+                        <div class="flex items-start">
+                            <div class="bg-red-50 p-3 rounded text-ses-red mr-4"><i
+                                    class="fa-solid fa-medal text-xl"></i></div>
+                            <div>
+                                <h4 class="font-bold text-ses-black text-lg" data-i18n="about_point_1_title">Calidad
+                                    Certificada</h4>
+                                <p class="text-sm text-gray-500" data-i18n="about_point_1_desc">Procedimientos WPS/PQR
+                                    calificados y trazabilidad total.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-red-50 p-3 rounded text-ses-red mr-4"><i
+                                    class="fa-solid fa-clock text-xl"></i></div>
+                            <div>
+                                <h4 class="font-bold text-ses-black text-lg" data-i18n="about_point_2_title">Respuesta
+                                    24/7</h4>
+                                <p class="text-sm text-gray-500" data-i18n="about_point_2_desc">Disponibilidad inmediata
+                                    para paradas de planta.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="about.html"
+                        class="inline-flex items-center mt-10 text-ses-red font-bold uppercase tracking-widest hover:text-ses-black transition">
+                        <span data-i18n="about_link">Conoce nuestra historia</span> <i
+                            class="fa-solid fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                <div class="relative" data-aos="fade-left">
+                    <div class="absolute -top-6 -right-6 w-full h-full border-2 border-ses-red rounded-sm z-0"></div>
+                    <img src="home.png"
+                        class="relative z-10 w-full h-[500px] object-cover rounded-sm shadow-2xl grayscale hover:grayscale-0 transition duration-700">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-ses-gray">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 max-w-3xl mx-auto">
+                <span class="text-ses-red font-bold uppercase tracking-widest text-xs"
+                    data-i18n="services_tag">Capacidades Técnicas</span>
+                <h2 class="text-4xl font-display font-black text-ses-black mt-3 mb-6" data-i18n="services_title">
+                    Soluciones Integrales</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-10 shadow-lg hover:shadow-2xl transition duration-300 group border-t-4 border-transparent hover:border-ses-red"
+                    data-aos="fade-up">
+                    <i
+                        class="fa-solid fa-fire-flame-curved text-5xl text-gray-300 group-hover:text-ses-red transition mb-6"></i>
+                    <h3 class="text-xl font-bold text-ses-black mb-4" data-i18n="service_1_title">Soldadura
+                        Especializada</h3>
+                    <p class="text-gray-500 text-sm mb-6" data-i18n="service_1_desc">Procesos TIG, MIG/MAG y SMAW para
+                        acero al carbono e inoxidable bajo códigos ASME.</p>
+                    <a href="services.html"
+                        class="text-xs font-black uppercase tracking-widest text-ses-red group-hover:text-ses-black transition"
+                        data-i18n="view_more">Ver Más &rarr;</a>
+                </div>
+                <div class="bg-white p-10 shadow-lg hover:shadow-2xl transition duration-300 group border-t-4 border-transparent hover:border-ses-red"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <i class="fa-solid fa-industry text-5xl text-gray-300 group-hover:text-ses-red transition mb-6"></i>
+                    <h3 class="text-xl font-bold text-ses-black mb-4" data-i18n="service_2_title">Mantenimiento Mayor
+                    </h3>
+                    <p class="text-gray-500 text-sm mb-6" data-i18n="service_2_desc">Gestión de paradas de planta,
+                        reparación de tanques y recipientes a presión.</p>
+                    <a href="services.html"
+                        class="text-xs font-black uppercase tracking-widest text-ses-red group-hover:text-ses-black transition"
+                        data-i18n="view_more">Ver Más &rarr;</a>
+                </div>
+                <div class="bg-white p-10 shadow-lg hover:shadow-2xl transition duration-300 group border-t-4 border-transparent hover:border-ses-red"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <i
+                        class="fa-solid fa-layer-group text-5xl text-gray-300 group-hover:text-ses-red transition mb-6"></i>
+                    <h3 class="text-xl font-bold text-ses-black mb-4" data-i18n="service_3_title">Fabricación & Montaje
+                    </h3>
+                    <p class="text-gray-500 text-sm mb-6" data-i18n="service_3_desc">Construcción de spools, estructuras
+                        metálicas pesadas y montaje en campo.</p>
+                    <a href="services.html"
+                        class="text-xs font-black uppercase tracking-widest text-ses-red group-hover:text-ses-black transition"
+                        data-i18n="view_more">Ver Más &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-stats-pattern bg-cover bg-fixed bg-center relative">
+        <div class="max-w-7xl mx-auto px-6 relative z-10 text-white">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+                <div data-aos="zoom-in">
+                    <p class="text-5xl md:text-6xl font-display font-black mb-2 text-white">120<span
+                            class="text-ses-red">+</span></p>
+                    <p class="text-xs md:text-sm uppercase tracking-widest font-bold text-gray-300"
+                        data-i18n="stat_projects">Proyectos</p>
+                </div>
+                <div data-aos="zoom-in" data-aos-delay="100">
+                    <p class="text-5xl md:text-6xl font-display font-black mb-2 text-white">15<span
+                            class="text-ses-red">A</span></p>
+                    <p class="text-xs md:text-sm uppercase tracking-widest font-bold text-gray-300"
+                        data-i18n="stat_exp">Experiencia</p>
+                </div>
+                <div data-aos="zoom-in" data-aos-delay="200">
+                    <p class="text-5xl md:text-6xl font-display font-black mb-2 text-white">100<span
+                            class="text-ses-red">%</span></p>
+                    <p class="text-xs md:text-sm uppercase tracking-widest font-bold text-gray-300"
+                        data-i18n="stat_cert">Certificado</p>
+                </div>
+                <div data-aos="zoom-in" data-aos-delay="300">
+                    <p class="text-5xl md:text-6xl font-display font-black mb-2 text-white">0</p>
+                    <p class="text-xs md:text-sm uppercase tracking-widest font-bold text-gray-300"
+                        data-i18n="stat_accidents">Accidentes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-ses-red">
+        <div class="max-w-5xl mx-auto px-6 text-center text-white">
+            <h2 class="text-3xl md:text-4xl font-display font-black mb-6" data-i18n="cta_title">¿Tiene un proyecto
+                complejo en mente?</h2>
+            <p class="text-white/80 text-lg mb-10 max-w-2xl mx-auto" data-i18n="cta_desc">
+                Nuestro equipo de ingeniería está listo para evaluar sus requerimientos técnicos.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="contact.html"
+                    class="bg-ses-black hover:bg-white hover:text-ses-black text-white px-10 py-4 font-bold uppercase tracking-widest transition duration-300 shadow-xl"
+                    data-i18n="cta_btn">
+                    Solicitar Visita
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-ses-black text-white pt-16 pb-8 border-t border-gray-800 text-sm">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div class="col-span-1">
+                <div class="flex items-center gap-2 mb-6">
+                    <img src="logo.png" alt="Logo SES Footer" class="h-8 w-auto grayscale opacity-80">
+                    <span class="font-display font-black text-xl">SES C.A.</span>
+                </div>
+                <p class="text-gray-500 leading-relaxed" data-i18n="footer_desc">
+                    Especialistas en soldadura industrial y montaje mecánico. Calidad ASME y seguridad certificada.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="font-bold uppercase tracking-widest mb-6 text-gray-300 text-xs" data-i18n="footer_company">
+                    Empresa</h4>
+                <ul class="space-y-3 text-gray-500">
+                    <li><a href="index.html" class="hover:text-ses-red transition" data-i18n="nav_home">Inicio</a></li>
+                    <li><a href="about.html" class="hover:text-ses-red transition" data-i18n="nav_about">Nosotros</a>
+                    </li>
+                    <li><a href="services.html" class="hover:text-ses-red transition"
+                            data-i18n="footer_projects">Proyectos</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-bold uppercase tracking-widest mb-6 text-gray-300 text-xs" data-i18n="nav_services">
+                    Servicios</h4>
+                <ul class="space-y-3 text-gray-500">
+                    <li><a href="#" class="hover:text-ses-red transition">Soldadura TIG/MIG</a></li>
+                    <li><a href="#" class="hover:text-ses-red transition" data-i18n="footer_maint">Mantenimiento</a>
+                    </li>
+                    <li><a href="#" class="hover:text-ses-red transition" data-i18n="footer_fab">Fabricación</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-bold uppercase tracking-widest mb-6 text-gray-300 text-xs" data-i18n="nav_contact">
+                    Contacto</h4>
+                <ul class="space-y-3 text-gray-500">
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-phone text-ses-red"></i> +58 269 000 0000
+                    </li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-envelope text-ses-red"></i> info@sesca.com
+                    </li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-location-dot text-ses-red"></i> Falcón,
+                        Venezuela</li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 pt-8 text-center text-gray-600 text-xs">
+            <p>&copy; 2026 Servicios Especializados en Soldadura C.A. (SES C.A.) - <span data-i18n="rights">Todos los
+                    derechos reservados.</span></p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, offset: 50, duration: 800 });
+
+        // === SISTEMA DE TRADUCCIÓN ===
+        const translations = {
+            es: {
+                tagline_logo: "Servicios Industriales",
+                nav_home: "Inicio", nav_about: "Nosotros", nav_services: "Servicios", nav_contact: "Cotizar",
+                hero_tagline: "Excelencia Operativa",
+                hero_title_1: "SOLIDEZ QUE", hero_title_2: "CONSTRUYE FUTURO.",
+                hero_desc: "Ingeniería de precisión, soldadura especializada y mantenimiento mayor para el sector Oil & Gas en Venezuela.",
+                hero_btn_1: "Nuestras Capacidades", hero_btn_2: "Hablar con Ingeniería",
+                standards_title: "Estándares Internacionales",
+                about_tag: "Sobre SES C.A.",
+                about_title_1: "Líderes en Metalmecánica", about_title_2: "de Alta Precisión.",
+                about_desc: "Con más de 15 años de experiencia, ofrecemos la tranquilidad de la precisión absoluta. Desde nuestra sede en Falcón, desplegamos equipos de alto rendimiento para proyectos críticos.",
+                about_point_1_title: "Calidad Certificada", about_point_1_desc: "Procedimientos WPS/PQR calificados y trazabilidad total.",
+                about_point_2_title: "Respuesta 24/7", about_point_2_desc: "Disponibilidad inmediata para paradas de planta.",
+                about_link: "Conoce nuestra historia",
+                services_tag: "Capacidades Técnicas", services_title: "Soluciones Integrales",
+                service_1_title: "Soldadura Especializada", service_1_desc: "Procesos TIG, MIG/MAG y SMAW para acero al carbono e inoxidable bajo códigos ASME.",
+                service_2_title: "Mantenimiento Mayor", service_2_desc: "Gestión de paradas de planta, reparación de tanques y recipientes a presión.",
+                service_3_title: "Fabricación & Montaje", service_3_desc: "Construcción de spools, estructuras metálicas pesadas y montaje en campo.",
+                view_more: "Ver Más →",
+                stat_projects: "Proyectos", stat_exp: "Experiencia", stat_cert: "Certificado", stat_accidents: "Accidentes",
+                cta_title: "¿Tiene un proyecto complejo?", cta_desc: "Nuestro equipo de ingeniería está listo para evaluar sus requerimientos técnicos.", cta_btn: "Solicitar Visita",
+                footer_desc: "Especialistas en soldadura industrial y montaje mecánico. Calidad ASME y seguridad certificada.",
+                footer_company: "Empresa", footer_projects: "Proyectos", footer_maint: "Mantenimiento", footer_fab: "Fabricación", rights: "Todos los derechos reservados."
+            },
+            en: {
+                tagline_logo: "Industrial Services",
+                nav_home: "Home", nav_about: "About Us", nav_services: "Services", nav_contact: "Get Quote",
+                hero_tagline: "Operational Excellence",
+                hero_title_1: "STRENGTH THAT", hero_title_2: "BUILDS THE FUTURE.",
+                hero_desc: "Precision engineering, specialized welding, and major maintenance for the Oil & Gas sector in Venezuela.",
+                hero_btn_1: "Our Capabilities", hero_btn_2: "Talk to Engineering",
+                standards_title: "International Standards",
+                about_tag: "About SES C.A.",
+                about_title_1: "Leaders in High Precision", about_title_2: "Metalworking.",
+                about_desc: "With over 15 years of experience, we offer the peace of mind of absolute precision. From our HQ in Falcón, we deploy high-performance teams for critical projects.",
+                about_point_1_title: "Certified Quality", about_point_1_desc: "Qualified WPS/PQR procedures and total traceability.",
+                about_point_2_title: "24/7 Response", about_point_2_desc: "Immediate availability for plant shutdowns.",
+                about_link: "Know our history",
+                services_tag: "Technical Capabilities", services_title: "Integral Solutions",
+                service_1_title: "Specialized Welding", service_1_desc: "TIG, MIG/MAG, and SMAW processes for carbon and stainless steel under ASME codes.",
+                service_2_title: "Major Maintenance", service_2_desc: "Plant turnaround management, tank repair, and pressure vessels.",
+                service_3_title: "Fabrication & Assembly", service_3_desc: "Spool construction, heavy steel structures, and field assembly.",
+                view_more: "View More →",
+                stat_projects: "Projects", stat_exp: "Experience", stat_cert: "Certified", stat_accidents: "Accidents",
+                cta_title: "Have a complex project?", cta_desc: "Our engineering team is ready to evaluate your technical requirements.", cta_btn: "Request Visit",
+                footer_desc: "Specialists in industrial welding and mechanical assembly. ASME quality and certified safety.",
+                footer_company: "Company", footer_projects: "Projects", footer_maint: "Maintenance", footer_fab: "Fabrication", rights: "All rights reserved."
+            },
+            pt: {
+                tagline_logo: "Serviços Industriais",
+                nav_home: "Início", nav_about: "Nós", nav_services: "Serviços", nav_contact: "Cotação",
+                hero_tagline: "Excelência Operacional",
+                hero_title_1: "SOLIDEZ QUE", hero_title_2: "CONSTRÓI O FUTURO.",
+                hero_desc: "Engenharia de precisão, soldagem especializada e manutenção pesada para o setor de Óleo & Gás na Venezuela.",
+                hero_btn_1: "Nossas Capacidades", hero_btn_2: "Falar com Engenharia",
+                standards_title: "Padrões Internacionais",
+                about_tag: "Sobre SES C.A.",
+                about_title_1: "Líderes em Metalmecânica", about_title_2: "de Alta Precisão.",
+                about_desc: "Com mais de 15 anos de experiência, oferecemos a tranquilidade da precisão absoluta. Da nossa sede em Falcón, enviamos equipes para projetos críticos.",
+                about_point_1_title: "Qualidade Certificada", about_point_1_desc: "Procedimentos WPS/PQR qualificados e rastreabilidade total.",
+                about_point_2_title: "Resposta 24/7", about_point_2_desc: "Disponibilidade imediata para paradas de planta.",
+                about_link: "Conheça nossa história",
+                services_tag: "Capacidades Técnicas", services_title: "Soluções Integrais",
+                service_1_title: "Soldagem Especializada", service_1_desc: "Processos TIG, MIG/MAG e SMAW para aço carbono e inoxidável sob códigos ASME.",
+                service_2_title: "Manutenção Maior", service_2_desc: "Gestão de paradas de planta, reparo de tanques e vasos de pressão.",
+                service_3_title: "Fabricação e Montagem", service_3_desc: "Construção de spools, estruturas metálicas pesadas e montagem em campo.",
+                view_more: "Ver Mais →",
+                stat_projects: "Projetos", stat_exp: "Experiência", stat_cert: "Certificado", stat_accidents: "Acidentes",
+                cta_title: "Tem um projeto complexo?", cta_desc: "Nossa equipe de engenharia está pronta para avaliar seus requisitos técnicos.", cta_btn: "Solicitar Visita",
+                footer_desc: "Especialistas em soldagem industrial e montagem mecânica. Qualidade ASME e segurança certificada.",
+                footer_company: "Empresa", footer_projects: "Projetos", footer_maint: "Manutenção", footer_fab: "Fabricação", rights: "Todos os direitos reservados."
+            },
+            ru: {
+                tagline_logo: "Пром. Услуги",
+                nav_home: "Главная", nav_about: "О нас", nav_services: "Услуги", nav_contact: "Запрос",
+                hero_tagline: "Операционное совершенство",
+                hero_title_1: "НАДЕЖНОСТЬ,", hero_title_2: "СТРОЯЩАЯ БУДУЩЕЕ.",
+                hero_desc: "Точное машиностроение, специализированная сварка и капитальный ремонт для нефтегазового сектора.",
+                hero_btn_1: "Наши возможности", hero_btn_2: "Связаться с инженерами",
+                standards_title: "Международные стандарты",
+                about_tag: "О компании SES C.A.",
+                about_title_1: "Лидеры в", about_title_2: "точной металлообработке.",
+                about_desc: "Более 15 лет опыта. Мы гарантируем абсолютную точность. Из штаб-квартиры в Фальконе мы развертываем высокопроизводительные команды.",
+                about_point_1_title: "Сертифицированное качество", about_point_1_desc: "Квалифицированные процедуры WPS/PQR и полная прослеживаемость.",
+                about_point_2_title: "Ответ 24/7", about_point_2_desc: "Немедленная готовность к остановке завода.",
+                about_link: "Наша история",
+                services_tag: "Технические возможности", services_title: "Комплексные решения",
+                service_1_title: "Спец. сварка", service_1_desc: "Процессы TIG, MIG/MAG и SMAW для углеродистой и нержавеющей стали (ASME).",
+                service_2_title: "Капитальный ремонт", service_2_desc: "Управление остановками заводов, ремонт резервуаров и сосудов под давлением.",
+                service_3_title: "Производство и монтаж", service_3_desc: "Изготовление трубопроводов, тяжелых металлоконструкций и полевой монтаж.",
+                view_more: "Подробнее →",
+                stat_projects: "Проектов", stat_exp: "Опыт", stat_cert: "Сертиф.", stat_accidents: "Аварий",
+                cta_title: "Сложный проект?", cta_desc: "Наша инженерная команда готова оценить ваши технические требования.", cta_btn: "Запросить визит",
+                footer_desc: "Специалисты по промышленной сварке и механическому монтажу. Качество ASME.",
+                footer_company: "Компания", footer_projects: "Проекты", footer_maint: "Обслуживание", footer_fab: "Производство", rights: "Все права защищены."
+            },
+            cn: {
+                tagline_logo: "工业服务",
+                nav_home: "首页", nav_about: "关于我们", nav_services: "服务", nav_contact: "报价",
+                hero_tagline: "卓越运营",
+                hero_title_1: "坚实基础", hero_title_2: "共筑未来",
+                hero_desc: "委内瑞拉石油和天然气行业的精密工程、特种焊接和主要维护服务。",
+                hero_btn_1: "我们的能力", hero_btn_2: "联系工程部",
+                standards_title: "国际标准",
+                about_tag: "关于 SES C.A.",
+                about_title_1: "高精度", about_title_2: "金属加工领域的领导者",
+                about_desc: "拥有超过15年的经验，我们提供绝对的精确度。我们从法尔孔总部派遣高性能团队负责关键项目。",
+                about_point_1_title: "认证质量", about_point_1_desc: "合格的WPS/PQR程序和全面的可追溯性。",
+                about_point_2_title: "24/7 响应", about_point_2_desc: "工厂停工期间可立即响应。",
+                about_link: "了解我们的历史",
+                services_tag: "技术能力", services_title: "整体解决方案",
+                service_1_title: "特种焊接", service_1_desc: "ASME规范下的碳钢和不锈钢TIG、MIG/MAG和SMAW工艺。",
+                service_2_title: "主要维护", service_2_desc: "工厂停工管理、储罐和压力容器维修。",
+                service_3_title: "制造与安装", service_3_desc: "管轴制造、重型钢结构及现场安装。",
+                view_more: "查看更多 →",
+                stat_projects: "项目", stat_exp: "经验", stat_cert: "认证", stat_accidents: "事故",
+                cta_title: "有复杂的项目？", cta_desc: "我们的工程团队随时准备评估您的技术要求。", cta_btn: "请求访问",
+                footer_desc: "工业焊接和机械装配专家。ASME质量和安全认证。",
+                footer_company: "公司", footer_projects: "项目", footer_maint: "维护", footer_fab: "制造", rights: "版权所有。"
+            }
+        };
+
+        function changeLanguage(lang) {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerText = translations[lang][key];
+                }
+            });
+            // Actualizar botón del menú
+            document.getElementById('current-lang').innerText = lang.toUpperCase();
+        }
+
+        // NAVBAR SCROLL LOGIC
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            const logoText = document.getElementById('logo-text');
+            const taglineText = document.getElementById('tagline-text');
+            const logoContainer = document.getElementById('logo-container');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const mobileBtn = document.getElementById('mobile-btn');
+            const langBtn = document.getElementById('lang-btn'); // Botón de idioma
+
+            if (window.scrollY > 50) {
+                // Scrolleado
+                nav.classList.add('bg-white', 'shadow-lg', 'py-2');
+                nav.classList.remove('py-3', 'border-transparent');
+
+                logoText.classList.remove('text-white');
+                logoText.classList.add('text-ses-black');
+                taglineText.classList.remove('text-gray-400');
+                taglineText.classList.add('text-gray-500');
+                logoContainer.classList.remove('bg-white/10', 'backdrop-blur-sm', 'border-white/20');
+                mobileBtn.classList.remove('text-white');
+                mobileBtn.classList.add('text-ses-black');
+
+                navLinks.forEach(link => {
+                    link.classList.remove('text-white', 'text-gray-300');
+                    link.classList.add('text-ses-black');
+                });
+
+                // Estilo botón idioma al scroll
+                langBtn.classList.remove('text-gray-300', 'border-white/20');
+                langBtn.classList.add('text-ses-black', 'border-gray-300');
+
+            } else {
+                // Top
+                nav.classList.remove('bg-white', 'shadow-lg', 'py-2');
+                nav.classList.add('py-3', 'border-transparent');
+
+                logoText.classList.add('text-white');
+                logoText.classList.remove('text-ses-black');
+                taglineText.classList.add('text-gray-400');
+                taglineText.classList.remove('text-gray-500');
+                logoContainer.classList.add('bg-white/10', 'backdrop-blur-sm', 'border-white/20');
+                mobileBtn.classList.add('text-white');
+                mobileBtn.classList.remove('text-ses-black');
+
+                navLinks.forEach((link, index) => {
+                    if (index === 0) {
+                        link.classList.add('text-white');
+                        link.classList.remove('text-ses-black');
+                    } else {
+                        link.classList.add('text-gray-300');
+                        link.classList.remove('text-ses-black');
+                    }
+                });
+
+                // Restaurar botón idioma
+                langBtn.classList.add('text-gray-300', 'border-white/20');
+                langBtn.classList.remove('text-ses-black', 'border-gray-300');
+            }
+        });
+
+        // MENÚ MÓVIL
+        const mobileBtn = document.getElementById('mobile-btn');
+        const closeMenu = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        }
+
+        mobileBtn.addEventListener('click', toggleMenu);
+        closeMenu.addEventListener('click', toggleMenu);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros | SES C.A.</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@700;800;900&family=Noto+Sans+SC:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ses: { red: '#D91F26', darkred: '#991b1b', black: '#0F172A', gray: '#F1F5F9' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans SC', 'sans-serif'],
+                        display: ['Montserrat', 'Noto Sans SC', 'sans-serif']
+                    },
+                    backgroundImage: {
+                        'welder-texture': "linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2070')"
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-50 text-slate-800 font-sans antialiased">
+
+    <nav class="fixed w-full z-50 bg-ses-black border-b border-gray-800 py-3 shadow-lg">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="bg-white p-1 rounded-sm h-12 w-auto flex items-center justify-center overflow-hidden">
+                    <img src="logo.png" alt="Logo SES C.A." class="h-full w-auto object-contain">
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-display font-black text-xl text-white leading-none tracking-tight">SES<span
+                            class="text-ses-red">.CA</span></span>
+                    <span class="text-[9px] uppercase tracking-widest text-gray-400 font-bold"
+                        data-i18n="tagline_logo">Servicios Especializados</span>
+                </div>
+            </a>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="index.html"
+                    class="text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-white transition"
+                    data-i18n="nav_home">Inicio</a>
+                <a href="about.html"
+                    class="text-xs font-bold uppercase tracking-widest text-white border-b-2 border-ses-red pb-1"
+                    data-i18n="nav_about">Nosotros</a>
+                <a href="services.html"
+                    class="text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-white transition"
+                    data-i18n="nav_services">Servicios</a>
+
+                <div class="relative group py-2">
+                    <button
+                        class="flex items-center gap-1 text-xs font-bold text-gray-300 hover:text-white transition uppercase tracking-widest border border-white/20 px-3 py-1 rounded hover:border-ses-red">
+                        <i class="fa-solid fa-globe text-ses-red"></i>
+                        <span id="current-lang">ES</span>
+                        <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
+                    </button>
+                    <div
+                        class="absolute right-0 mt-0 w-36 bg-white rounded-sm shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right z-50">
+                        <div class="py-1">
+                            <button onclick="changeLanguage('es')"
+                                class="w-full text-left px-4 py-2 text-xs text-gray-700 hover:bg-ses-red hover:text-white transition flex items-center"><span
+                                    class="mr-2">🇪🇸</span> Español</button>
+                            <button onclick="changeLanguage('en')"
+                                class="w-full text-left px-4 py-2 text-xs text-gray-700 hover:bg-ses-red hover:text-white transition flex items-center"><span
+                                    class="mr-2">🇺🇸</span> English</button>
+                            <button onclick="changeLanguage('pt')"
+                                class="w-full text-left px-4 py-2 text-xs text-gray-700 hover:bg-ses-red hover:text-white transition flex items-center"><span
+                                    class="mr-2">🇧🇷</span> Português</button>
+                            <button onclick="changeLanguage('ru')"
+                                class="w-full text-left px-4 py-2 text-xs text-gray-700 hover:bg-ses-red hover:text-white transition flex items-center"><span
+                                    class="mr-2">🇷🇺</span> Русский</button>
+                            <button onclick="changeLanguage('cn')"
+                                class="w-full text-left px-4 py-2 text-xs text-gray-700 hover:bg-ses-red hover:text-white transition flex items-center"><span
+                                    class="mr-2">🇨🇳</span> 中文</button>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="contact.html"
+                    class="bg-ses-red text-white px-5 py-2.5 font-bold text-xs uppercase tracking-widest rounded hover:bg-white hover:text-ses-red transition duration-300"
+                    data-i18n="nav_contact">
+                    Contacto
+                </a>
+            </div>
+
+            <button id="mobile-btn" class="md:hidden text-white text-xl">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu"
+            class="fixed inset-0 bg-ses-black/95 z-40 hidden flex-col items-center justify-center space-y-8 backdrop-blur-md">
+            <a href="index.html" class="text-xl font-bold text-gray-400 hover:text-white"
+                data-i18n="nav_home">Inicio</a>
+            <a href="about.html" class="text-xl font-bold text-white" data-i18n="nav_about">Nosotros</a>
+            <a href="services.html" class="text-xl font-bold text-gray-400 hover:text-white"
+                data-i18n="nav_services">Servicios</a>
+
+            <div class="flex gap-4">
+                <button onclick="changeLanguage('es')" class="text-2xl grayscale hover:grayscale-0">🇪🇸</button>
+                <button onclick="changeLanguage('en')" class="text-2xl grayscale hover:grayscale-0">🇺🇸</button>
+                <button onclick="changeLanguage('pt')" class="text-2xl grayscale hover:grayscale-0">🇧🇷</button>
+                <button onclick="changeLanguage('ru')" class="text-2xl grayscale hover:grayscale-0">🇷🇺</button>
+                <button onclick="changeLanguage('cn')" class="text-2xl grayscale hover:grayscale-0">🇨🇳</button>
+            </div>
+
+            <a href="contact.html" class="text-xl font-bold text-ses-red" data-i18n="nav_contact">Contacto</a>
+            <button id="close-menu" class="absolute top-6 right-6 text-white text-2xl"><i
+                    class="fa-solid fa-xmark"></i></button>
+        </div>
+    </nav>
+
+    <header class="pt-40 pb-24 bg-welder-texture bg-cover bg-center text-white text-center relative">
+        <div class="max-w-4xl mx-auto px-6 relative z-10" data-aos="fade-down">
+            <span class="text-ses-red font-bold uppercase tracking-[0.3em] text-xs mb-4 block"
+                data-i18n="hero_tag">Nuestra Identidad</span>
+            <h1 class="text-4xl md:text-6xl font-display font-black uppercase tracking-tight mb-6">
+                <span data-i18n="hero_title_1">Ingeniería, Pasión y</span> <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-ses-red to-orange-500"
+                    data-i18n="hero_title_2">Acero.</span>
+            </h1>
+            <p class="text-gray-300 text-lg max-w-2xl mx-auto font-light leading-relaxed" data-i18n="hero_desc">
+                Más que una empresa de soldadura, somos un socio estratégico para la industria energética venezolana.
+            </p>
+        </div>
+        <div class="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-gray-50 to-transparent"></div>
+    </header>
+
+    <section class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+            <div data-aos="fade-right">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="h-0.5 w-10 bg-ses-red"></div>
+                    <span class="text-ses-black font-bold uppercase tracking-widest text-sm"
+                        data-i18n="history_tag">Nuestra Trayectoria</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-display font-black text-ses-black mb-6" data-i18n="history_title">
+                    Forjando soluciones desde <br>el corazón de Falcón.
+                </h2>
+                <div class="prose prose-lg text-gray-600">
+                    <p class="mb-4" data-i18n="history_p1">
+                        Fundada con la visión de elevar los estándares metalmecánicos de la región, SES C.A. ha
+                        evolucionado de ser un taller local a convertirse en un contratista de referencia para el sector
+                        Oil & Gas.
+                    </p>
+                    <p class="mb-4" data-i18n="history_p2">
+                        Entendemos la complejidad operativa de las refinerías y plantas de proceso. Por ello, hemos
+                        invertido constantemente en la certificación de nuestro talento humano y en tecnología de punta.
+                    </p>
+                    <blockquote class="border-l-4 border-ses-red pl-4 italic text-gray-800 font-medium my-6"
+                        data-i18n="history_quote">
+                        "No soldamos metal, unimos la infraestructura que mueve al país con seguridad absoluta."
+                    </blockquote>
+                </div>
+            </div>
+
+            <div class="relative" data-aos="fade-left">
+                <div class="absolute inset-0 bg-ses-red transform translate-x-4 translate-y-4 rounded-sm"></div>
+                <img src="about.jpg" alt="Taller SES C.A."
+                    class="relative z-10 w-full h-[500px] object-cover rounded-sm shadow-2xl grayscale hover:grayscale-0 transition duration-500">
+
+                <div
+                    class="absolute bottom-10 -left-10 z-20 bg-white p-6 shadow-xl border-t-4 border-ses-red hidden md:block">
+                    <div class="flex items-center gap-4">
+                        <i class="fa-solid fa-users-gear text-4xl text-ses-black"></i>
+                        <div>
+                            <p class="font-display font-black text-2xl text-ses-black">+50</p>
+                            <p class="text-xs font-bold uppercase text-gray-500" data-i18n="stats_cert">Profesionales
+                                <br>Certificados</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white border-y border-gray-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <div class="bg-gray-50 p-10 rounded-sm hover:shadow-xl transition duration-300 group"
+                    data-aos="fade-up">
+                    <div
+                        class="w-14 h-14 bg-ses-black text-white flex items-center justify-center rounded mb-6 text-2xl group-hover:bg-ses-red transition">
+                        <i class="fa-solid fa-crosshairs"></i>
+                    </div>
+                    <h3 class="text-xl font-display font-bold text-ses-black mb-4" data-i18n="mission_title">Nuestra
+                        Misión</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed" data-i18n="mission_desc">
+                        Proveer soluciones integrales en soldadura, mantenimiento y construcción mecánica, cumpliendo
+                        rigurosamente con los plazos y estándares de calidad (ASME/API).
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 p-10 rounded-sm hover:shadow-xl transition duration-300 group" data-aos="fade-up"
+                    data-aos-delay="100">
+                    <div
+                        class="w-14 h-14 bg-ses-black text-white flex items-center justify-center rounded mb-6 text-2xl group-hover:bg-ses-red transition">
+                        <i class="fa-solid fa-eye"></i>
+                    </div>
+                    <h3 class="text-xl font-display font-bold text-ses-black mb-4" data-i18n="vision_title">Nuestra
+                        Visión</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed" data-i18n="vision_desc">
+                        Consolidarnos para el año 2030 como la empresa líder en el occidente de Venezuela en servicios
+                        metalmecánicos de alta complejidad y cultura de "Cero Accidentes".
+                    </p>
+                </div>
+
+                <div class="bg-ses-red p-10 rounded-sm shadow-xl text-white transform md:-translate-y-4"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 bg-white text-ses-red flex items-center justify-center rounded mb-6 text-2xl">
+                        <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <h3 class="text-xl font-display font-bold mb-4" data-i18n="values_title">Valores Nucleares</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check"></i> <strong
+                                data-i18n="val_1">Seguridad:</strong> No es negociable.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check"></i> <strong
+                                data-i18n="val_2">Integridad:</strong> Transparencia total.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check"></i> <strong
+                                data-i18n="val_3">Excelencia:</strong> Calidad certificada.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check"></i> <strong
+                                data-i18n="val_4">Innovación:</strong> Mejora continua.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-ses-black text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10"
+            style="background-image: radial-gradient(#D91F26 1px, transparent 1px); background-size: 30px 30px;"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+            <div class="inline-block bg-ses-red/20 border border-ses-red px-4 py-1 rounded-full mb-6">
+                <span class="text-ses-red font-bold text-xs uppercase tracking-widest" data-i18n="qhse_tag">Política
+                    QHSE</span>
+            </div>
+            <h2 class="text-3xl md:text-5xl font-display font-black mb-8" data-i18n="qhse_title">La Seguridad es nuestro
+                <br>Valor Principal.</h2>
+            <p class="text-gray-400 max-w-3xl mx-auto text-lg mb-12" data-i18n="qhse_desc">
+                En SES C.A., creemos firmemente que todos los accidentes son prevenibles. Nuestro sistema de gestión
+                cumple estrictamente con normativas LOPCYMAT e internacionales (OSHA).
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+                <div class="p-4 border border-gray-800 hover:border-ses-red transition rounded bg-gray-900/50">
+                    <i class="fa-solid fa-helmet-safety text-3xl text-ses-red mb-3"></i>
+                    <p class="font-bold text-sm" data-i18n="qhse_1">EPP Certificado</p>
+                </div>
+                <div class="p-4 border border-gray-800 hover:border-ses-red transition rounded bg-gray-900/50">
+                    <i class="fa-solid fa-clipboard-check text-3xl text-ses-red mb-3"></i>
+                    <p class="font-bold text-sm" data-i18n="qhse_2">Análisis de Riesgo</p>
+                </div>
+                <div class="p-4 border border-gray-800 hover:border-ses-red transition rounded bg-gray-900/50">
+                    <i class="fa-solid fa-user-shield text-3xl text-ses-red mb-3"></i>
+                    <p class="font-bold text-sm" data-i18n="qhse_3">Personal Capacitado</p>
+                </div>
+                <div class="p-4 border border-gray-800 hover:border-ses-red transition rounded bg-gray-900/50">
+                    <i class="fa-solid fa-leaf text-3xl text-ses-red mb-3"></i>
+                    <p class="font-bold text-sm" data-i18n="qhse_4">Gestión Ambiental</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-ses-red">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-10">
+            <div class="text-white">
+                <h2 class="text-3xl font-display font-black mb-2" data-i18n="cta_title">¿Listo para iniciar su proyecto?
+                </h2>
+                <p class="text-white/80" data-i18n="cta_desc">Contáctenos hoy y reciba una inspección técnica
+                    preliminar.</p>
+            </div>
+            <a href="contact.html"
+                class="bg-white text-ses-red px-8 py-4 font-bold uppercase tracking-widest hover:bg-ses-black hover:text-white transition duration-300 shadow-xl rounded-sm whitespace-nowrap"
+                data-i18n="cta_btn">
+                Solicitar Cotización
+            </a>
+        </div>
+    </section>
+
+    <footer class="bg-ses-black text-white pt-16 pb-8 border-t border-gray-800 text-sm">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div class="col-span-1">
+                <div class="flex items-center gap-2 mb-6">
+                    <img src="logo.jpg" alt="Logo SES Footer" class="h-8 w-auto grayscale opacity-80">
+                    <span class="font-display font-black text-xl">SES C.A.</span>
+                </div>
+                <p class="text-gray-500 leading-relaxed" data-i18n="footer_desc">
+                    Especialistas en soldadura industrial y montaje mecánico. Calidad ASME y seguridad certificada.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="font-bold uppercase tracking-widest mb-6 text-gray-300 text-xs" data-i18n="nav_about">Empresa
+                </h4>
+                <ul class="space-y-3 text-gray-500">
+                    <li><a href="index.html" class="hover:text-ses-red transition" data-i18n="nav_home">Inicio</a></li>
+                    <li><a href="about.html" class="hover:text-ses-red transition" data-i18n="nav_about">Nosotros</a>
+                    </li>
+                    <li><a href="services.html" class="hover:text-ses-red transition"
+                            data-i18n="nav_services">Servicios</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-bold uppercase tracking-widest mb-6 text-gray-300 text-xs" data-i18n="nav_services">
+                    Servicios</h4>
+                <ul class="space-y-3 text-gray-500">
+                    <li><a href="#" class="hover:text-ses-red transition">Soldadura TIG/MIG</a></li>
+                    <li><a href="#" class="hover:text-ses-red transition">Mantenimiento</a></li>
+                    <li><a href="#" class="hover:text-ses-red transition">Fabricación</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-bold uppercase tracking-widest mb-6 text-gray-300 text-xs" data-i18n="nav_contact">
+                    Contacto</h4>
+                <ul class="space-y-3 text-gray-500">
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-phone text-ses-red"></i> +58 269 000 0000
+                    </li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-envelope text-ses-red"></i> info@sesca.com
+                    </li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-location-dot text-ses-red"></i> Falcón,
+                        Venezuela</li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 pt-8 text-center text-gray-600 text-xs">
+            <p>&copy; 2026 Servicios Especializados en Soldadura C.A. (SES C.A.) - <span data-i18n="rights">Todos los
+                    derechos reservados.</span></p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, offset: 50, duration: 800 });
+
+        // === TRADUCCIONES ===
+        const translations = {
+            es: {
+                tagline_logo: "Servicios Especializados",
+                nav_home: "Inicio", nav_about: "Nosotros", nav_services: "Servicios", nav_contact: "Contacto",
+                hero_tag: "Nuestra Identidad", hero_title_1: "Ingeniería, Pasión y", hero_title_2: "Acero.",
+                hero_desc: "Más que una empresa de soldadura, somos un socio estratégico para la industria energética venezolana.",
+                history_tag: "Nuestra Trayectoria", history_title: "Forjando soluciones desde el corazón de Falcón.",
+                history_p1: "Fundada con la visión de elevar los estándares metalmecánicos de la región, SES C.A. ha evolucionado de ser un taller local a convertirse en un contratista de referencia para el sector Oil & Gas.",
+                history_p2: "Entendemos la complejidad operativa de las refinerías y plantas de proceso. Por ello, hemos invertido constantemente en la certificación de nuestro talento humano y en tecnología de punta.",
+                history_quote: '"No soldamos metal, unimos la infraestructura que mueve al país con seguridad absoluta."',
+                stats_cert: "Profesionales Certificados",
+                mission_title: "Nuestra Misión", mission_desc: "Proveer soluciones integrales en soldadura, mantenimiento y construcción mecánica, cumpliendo rigurosamente con los plazos y estándares de calidad (ASME/API).",
+                vision_title: "Nuestra Visión", vision_desc: 'Consolidarnos para el año 2030 como la empresa líder en el occidente de Venezuela en servicios metalmecánicos de alta complejidad, reconocidos por nuestra cultura de "Cero Accidentes".',
+                values_title: "Valores Nucleares", val_1: "Seguridad:", val_2: "Integridad:", val_3: "Excelencia:", val_4: "Innovación:",
+                qhse_tag: "Política QHSE", qhse_title: "La Seguridad es nuestro Valor Principal.", qhse_desc: "En SES C.A., creemos firmemente que todos los accidentes son prevenibles. Nuestro sistema de gestión cumple estrictamente con normativas LOPCYMAT e internacionales (OSHA).",
+                qhse_1: "EPP Certificado", qhse_2: "Análisis de Riesgo", qhse_3: "Personal Capacitado", qhse_4: "Gestión Ambiental",
+                cta_title: "¿Listo para iniciar su proyecto?", cta_desc: "Contáctenos hoy y reciba una inspección técnica preliminar.", cta_btn: "Solicitar Cotización",
+                footer_desc: "Especialistas en soldadura industrial y montaje mecánico. Calidad ASME y seguridad certificada.", rights: "Todos los derechos reservados."
+            },
+            en: {
+                tagline_logo: "Specialized Services",
+                nav_home: "Home", nav_about: "About Us", nav_services: "Services", nav_contact: "Contact",
+                hero_tag: "Our Identity", hero_title_1: "Engineering, Passion and", hero_title_2: "Steel.",
+                hero_desc: "More than a welding company, we are a strategic partner for the Venezuelan energy industry.",
+                history_tag: "Our Trajectory", history_title: "Forging solutions from the heart of Falcón.",
+                history_p1: "Founded with the vision of raising metalworking standards in the region, SES C.A. has evolved from a local workshop to a benchmark contractor for the Oil & Gas sector.",
+                history_p2: "We understand the operational complexity of refineries and process plants. Therefore, we have constantly invested in the certification of our human talent and cutting-edge technology.",
+                history_quote: '"We don\'t just weld metal, we join the infrastructure that moves the country with absolute safety."',
+                stats_cert: "Certified Professionals",
+                mission_title: "Our Mission", mission_desc: "Provide integral solutions in welding, maintenance, and mechanical construction, strictly complying with deadlines and quality standards (ASME/API).",
+                vision_title: "Our Vision", vision_desc: 'To consolidate ourselves by 2030 as the leading company in western Venezuela in high-complexity metalworking services, recognized for our "Zero Accidents" culture.',
+                values_title: "Core Values", val_1: "Safety:", val_2: "Integrity:", val_3: "Excellence:", val_4: "Innovation:",
+                qhse_tag: "QHSE Policy", qhse_title: "Safety is our Core Value.", qhse_desc: "At SES C.A., we firmly believe that all accidents are preventable. Our management system strictly complies with local and international (OSHA) regulations.",
+                qhse_1: "Certified PPE", qhse_2: "Risk Analysis", qhse_3: "Trained Personnel", qhse_4: "Env. Management",
+                cta_title: "Ready to start your project?", cta_desc: "Contact us today and receive a preliminary technical inspection.", cta_btn: "Request Quote",
+                footer_desc: "Specialists in industrial welding and mechanical assembly. ASME quality and certified safety.", rights: "All rights reserved."
+            },
+            pt: {
+                tagline_logo: "Serviços Especializados",
+                nav_home: "Início", nav_about: "Sobre Nós", nav_services: "Serviços", nav_contact: "Contato",
+                hero_tag: "Nossa Identidade", hero_title_1: "Engenharia, Paixão e", hero_title_2: "Aço.",
+                hero_desc: "Mais do que uma empresa de soldagem, somos um parceiro estratégico para a indústria energética venezuelana.",
+                history_tag: "Nossa Trajetória", history_title: "Forjando soluções do coração de Falcón.",
+                history_p1: "Fundada com a visão de elevar os padrões metalmecânicos da região, a SES C.A. evoluiu de uma oficina local para se tornar uma empreiteira de referência para o setor de Óleo e Gás.",
+                history_p2: "Entendemos a complexidade operacional de refinarias e plantas de processo. Por isso, investimos constantemente na certificação do nosso talento humano.",
+                history_quote: '"Não soldamos apenas metal, unimos a infraestrutura que move o país com segurança absoluta."',
+                stats_cert: "Profissionais Certificados",
+                mission_title: "Nossa Missão", mission_desc: "Fornecer soluções integrais em soldagem, manutenção e construção mecânica, cumprindo rigorosamente os prazos e padrões de qualidade (ASME/API).",
+                vision_title: "Nossa Visão", vision_desc: 'Consolidar-nos até 2030 como a empresa líder no oeste da Venezuela em serviços metalmecânicos de alta complexidade e cultura de "Zero Acidentes".',
+                values_title: "Valores Nucleares", val_1: "Segurança:", val_2: "Integridade:", val_3: "Excelência:", val_4: "Inovação:",
+                qhse_tag: "Política QHSE", qhse_title: "A Segurança é nosso Valor Principal.", qhse_desc: "Na SES C.A., acreditamos firmemente que todos os acidentes são evitáveis. Nosso sistema de gestão cumpre rigorosamente as normas internacionais (OSHA).",
+                qhse_1: "EPI Certificado", qhse_2: "Análise de Risco", qhse_3: "Pessoal Treinado", qhse_4: "Gestão Ambiental",
+                cta_title: "Pronto para iniciar seu projeto?", cta_desc: "Contate-nos hoje e receba uma inspeção técnica preliminar.", cta_btn: "Solicitar Cotação",
+                footer_desc: "Especialistas em soldagem industrial e montagem mecânica. Qualidade ASME e segurança certificada.", rights: "Todos os direitos reservados."
+            },
+            ru: {
+                tagline_logo: "Спец. Услуги",
+                nav_home: "Главная", nav_about: "О Нас", nav_services: "Услуги", nav_contact: "Контакты",
+                hero_tag: "Наша Идентичность", hero_title_1: "Инженерия, Страсть и", hero_title_2: "Сталь.",
+                hero_desc: "Больше чем сварочная компания, мы стратегический партнер энергетической промышленности Венесуэлы.",
+                history_tag: "Наш Путь", history_title: "Ковка решений из сердца Фалькона.",
+                history_p1: "Основанная с видением повышения стандартов металлообработки, SES C.A. превратилась из местной мастерской в эталонного подрядчика для нефтегазового сектора.",
+                history_p2: "Мы понимаем сложность работы НПЗ. Поэтому мы постоянно инвестируем в сертификацию наших сотрудников и передовые технологии.",
+                history_quote: '"Мы не просто свариваем металл, мы соединяем инфраструктуру, которая движет страной, с абсолютной безопасностью."',
+                stats_cert: "Сертиф. Специалисты",
+                mission_title: "Наша Миссия", mission_desc: "Предоставление комплексных решений в области сварки и монтажа, строго соблюдая сроки и стандарты качества (ASME/API).",
+                vision_title: "Наше Видение", vision_desc: 'К 2030 году стать ведущей компанией на западе Венесуэлы в области сложных металлообрабатывающих услуг с культурой "Ноль Аварий".',
+                values_title: "Ключевые Ценности", val_1: "Безопасность:", val_2: "Честность:", val_3: "Совершенство:", val_4: "Инновации:",
+                qhse_tag: "Политика QHSE", qhse_title: "Безопасность - наша главная ценность.", qhse_desc: "В SES C.A. мы твердо верим, что все аварии предотвратимы. Наша система управления строго соответствует нормам OSHA.",
+                qhse_1: "Сертиф. СИЗ", qhse_2: "Анализ Рисков", qhse_3: "Обученный Персонал", qhse_4: "Экология",
+                cta_title: "Готовы начать проект?", cta_desc: "Свяжитесь с нами сегодня для предварительной технической инспекции.", cta_btn: "Запросить цену",
+                footer_desc: "Специалисты по промышленной сварке и механическому монтажу. Качество ASME.", rights: "Все права защищены."
+            },
+            cn: {
+                tagline_logo: "专业服务",
+                nav_home: "首页", nav_about: "关于我们", nav_services: "服务", nav_contact: "联系",
+                hero_tag: "我们的身份", hero_title_1: "工程、激情与", hero_title_2: "钢铁",
+                hero_desc: "不仅仅是一家焊接公司，我们是委内瑞拉能源行业的战略合作伙伴。",
+                history_tag: "我们的历程", history_title: "从法尔孔中心锻造解决方案。",
+                history_p1: "SES C.A. 成立的愿景是提高该地区的金属加工标准，现已从一家当地车间发展成为石油和天然气行业的标杆承包商。",
+                history_p2: "我们了解炼油厂和加工厂的操作复杂性。因此，我们不断投资于人才认证和尖端技术。",
+                history_quote: '“我们不仅仅是焊接金属，我们以绝对的安全连接着推动国家发展的基础设施。”',
+                stats_cert: "认证专家",
+                mission_title: "我们的使命", mission_desc: "在严格遵守期限和质量标准 (ASME/API) 的前提下，提供焊接、维护和机械施工的整体解决方案。",
+                vision_title: "我们的愿景", vision_desc: "到 2030 年巩固我们在委内瑞拉西部作为高复杂金属加工服务领先企业的地位，并以“零事故”文化著称。",
+                values_title: "核心价值观", val_1: "安全：", val_2: "诚信：", val_3: "卓越：", val_4: "创新：",
+                qhse_tag: "QHSE 政策", qhse_title: "安全是我们的核心价值。", qhse_desc: "在 SES C.A.，我们坚信所有事故都是可以预防的。我们的管理体系严格遵守 OSHA 国际标准。",
+                qhse_1: "认证 PPE", qhse_2: "风险分析", qhse_3: "受训人员", qhse_4: "环境管理",
+                cta_title: "准备好开始您的项目了吗？", cta_desc: "立即联系我们进行初步技术检查。", cta_btn: "索取报价",
+                footer_desc: "工业焊接和机械装配专家。ASME 质量和认证安全。", rights: "版权所有。"
+            }
+        };
+
+        function changeLanguage(lang) {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerText = translations[lang][key];
+                }
+            });
+            document.getElementById('current-lang').innerText = lang.toUpperCase();
+        }
+
+        // Menú Móvil Logic
+        const mobileBtn = document.getElementById('mobile-btn');
+        const closeMenu = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        }
+
+        mobileBtn.addEventListener('click', toggleMenu);
+        closeMenu.addEventListener('click', toggleMenu);
+    </script>
+</body>
+
+</html>
