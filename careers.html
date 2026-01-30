@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabaja con Nosotros | SES C.A.</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@700;800;900&family=Noto+Sans+SC:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ses: { red: '#D91F26', darkred: '#991b1b', black: '#0F172A', gray: '#F1F5F9', steel: '#64748B' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans SC', 'sans-serif'],
+                        display: ['Montserrat', 'Noto Sans SC', 'sans-serif']
+                    },
+                    backgroundImage: {
+                        'careers-hero': "linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1531973576160-7125cd663d86?q=80&w=2070')"
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-50 text-slate-800 font-sans antialiased">
+
+    <nav class="fixed w-full z-50 bg-ses-black border-b border-gray-800 py-3 shadow-lg">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="bg-white p-1 rounded-sm h-12 w-auto flex items-center justify-center overflow-hidden">
+                    <img src="logo.png" alt="Logo SES C.A." class="h-full w-auto object-contain">
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-display font-black text-xl text-white leading-none tracking-tight">SES<span
+                            class="text-ses-red">.CA</span></span>
+                    <span class="text-[9px] uppercase tracking-widest text-gray-400 font-bold"
+                        data-i18n="tagline_logo">Servicios Especializados</span>
+                </div>
+            </a>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="index.html"
+                    class="text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-white transition"
+                    data-i18n="nav_home">Inicio</a>
+                <a href="about.html"
+                    class="text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-white transition"
+                    data-i18n="nav_about">Nosotros</a>
+                <a href="services.html"
+                    class="text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-white transition"
+                    data-i18n="nav_services">Servicios</a>
+                <a href="careers.html"
+                    class="text-xs font-bold uppercase tracking-widest text-white border-b-2 border-ses-red pb-1"
+                    data-i18n="nav_careers">Empleo</a>
+
+                <div class="relative group py-2">
+                    <button
+                        class="flex items-center gap-1 text-xs font-bold text-gray-300 hover:text-white transition uppercase tracking-widest border border-white/20 px-3 py-1 rounded hover:border-ses-red">
+                        <i class="fa-solid fa-globe text-ses-red"></i> <span id="current-lang">ES</span> <i
+                            class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
+                    </button>
+                    <div
+                        class="absolute right-0 mt-0 w-36 bg-white rounded-sm shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right z-50">
+                        <div class="py-1">
+                            <button onclick="changeLanguage('es')"
+                                class="w-full text-left px-4 py-2 text-xs text-gray-700 hover:bg-ses-red hover:text-white transition flex items-center"><span
+                                    class="mr-2">🇪🇸</span> Español</button>
+                            <button onclick="changeLanguage('en')"
+                                class="w-full text-left px-4 py-2 text-xs text-gray-700 hover:bg-ses-red hover:text-white transition flex items-center"><span
+                                    class="mr-2">🇺🇸</span> English</button>
+                            <button onclick="changeLanguage('pt')"
+                                class="w-full text-left px-4 py-2 text-xs text-gray-700 hover:bg-ses-red hover:text-white transition flex items-center"><span
+                                    class="mr-2">🇧🇷</span> Português</button>
+                            <button onclick="changeLanguage('ru')"
+                                class="w-full text-left px-4 py-2 text-xs text-gray-700 hover:bg-ses-red hover:text-white transition flex items-center"><span
+                                    class="mr-2">🇷🇺</span> Русский</button>
+                            <button onclick="changeLanguage('cn')"
+                                class="w-full text-left px-4 py-2 text-xs text-gray-700 hover:bg-ses-red hover:text-white transition flex items-center"><span
+                                    class="mr-2">🇨🇳</span> 中文</button>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="contact.html"
+                    class="bg-ses-red text-white px-5 py-2.5 font-bold text-xs uppercase tracking-widest rounded hover:bg-white hover:text-ses-red transition duration-300 shadow-md"
+                    data-i18n="nav_contact">Contacto</a>
+            </div>
+
+            <button id="mobile-btn" class="md:hidden text-white text-xl"><i class="fa-solid fa-bars"></i></button>
+        </div>
+
+        <div id="mobile-menu"
+            class="fixed inset-0 bg-ses-black/95 z-40 hidden flex-col items-center justify-center space-y-8 backdrop-blur-md">
+            <a href="index.html" class="text-xl font-bold text-gray-400 hover:text-white"
+                data-i18n="nav_home">Inicio</a>
+            <a href="about.html" class="text-xl font-bold text-gray-400 hover:text-white"
+                data-i18n="nav_about">Nosotros</a>
+            <a href="services.html" class="text-xl font-bold text-gray-400 hover:text-white"
+                data-i18n="nav_services">Servicios</a>
+            <a href="careers.html" class="text-xl font-bold text-white" data-i18n="nav_careers">Empleo</a>
+
+            <div class="flex gap-4">
+                <button onclick="changeLanguage('es')" class="text-2xl grayscale hover:grayscale-0">🇪🇸</button>
+                <button onclick="changeLanguage('en')" class="text-2xl grayscale hover:grayscale-0">🇺🇸</button>
+                <button onclick="changeLanguage('pt')" class="text-2xl grayscale hover:grayscale-0">🇧🇷</button>
+                <button onclick="changeLanguage('ru')" class="text-2xl grayscale hover:grayscale-0">🇷🇺</button>
+                <button onclick="changeLanguage('cn')" class="text-2xl grayscale hover:grayscale-0">🇨🇳</button>
+            </div>
+            <a href="contact.html" class="text-xl font-bold text-ses-red" data-i18n="nav_contact">Contacto</a>
+            <button id="close-menu" class="absolute top-6 right-6 text-white text-2xl"><i
+                    class="fa-solid fa-xmark"></i></button>
+        </div>
+    </nav>
+
+    <header class="pt-40 pb-20 bg-careers-hero bg-cover bg-center text-white text-center relative">
+        <div class="max-w-4xl mx-auto px-6 relative z-10" data-aos="fade-down">
+            <span class="text-ses-red font-bold uppercase tracking-[0.3em] text-xs mb-4 block"
+                data-i18n="hero_tag">Únete al Equipo</span>
+            <h1 class="text-4xl md:text-6xl font-display font-black uppercase tracking-tight mb-6"
+                data-i18n="hero_title">
+                Construye tu <br>Carrera
+            </h1>
+            <p class="text-gray-300 text-lg max-w-2xl mx-auto font-light leading-relaxed" data-i18n="hero_desc">
+                Buscamos talento comprometido con la excelencia técnica y la seguridad industrial. Únete a una empresa
+                líder en el sector energético.
+            </p>
+        </div>
+        <div class="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-gray-50 to-transparent"></div>
+    </header>
+
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-display font-black text-ses-black mb-4" data-i18n="why_title">¿Por qué SES
+                    C.A.?</h2>
+                <div class="w-16 h-1 bg-ses-red mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="p-8 bg-white shadow-lg border-t-4 border-ses-red rounded-sm" data-aos="fade-up">
+                    <i class="fa-solid fa-helmet-safety text-4xl text-ses-black mb-4"></i>
+                    <h3 class="font-bold text-lg mb-2" data-i18n="ben_1_title">Seguridad Primero</h3>
+                    <p class="text-gray-500 text-sm" data-i18n="ben_1_desc">Trabajamos bajo los más altos estándares de
+                        seguridad industrial (QHSE) para proteger a nuestro personal.</p>
+                </div>
+                <div class="p-8 bg-white shadow-lg border-t-4 border-ses-red rounded-sm" data-aos="fade-up"
+                    data-aos-delay="100">
+                    <i class="fa-solid fa-arrow-trend-up text-4xl text-ses-black mb-4"></i>
+                    <h3 class="font-bold text-lg mb-2" data-i18n="ben_2_title">Crecimiento Profesional</h3>
+                    <p class="text-gray-500 text-sm" data-i18n="ben_2_desc">Planes de carrera y formación continua en
+                        nuevas tecnologías de soldadura y montaje.</p>
+                </div>
+                <div class="p-8 bg-white shadow-lg border-t-4 border-ses-red rounded-sm" data-aos="fade-up"
+                    data-aos-delay="200">
+                    <i class="fa-solid fa-users text-4xl text-ses-black mb-4"></i>
+                    <h3 class="font-bold text-lg mb-2" data-i18n="ben_3_title">Buen Ambiente</h3>
+                    <p class="text-gray-500 text-sm" data-i18n="ben_3_desc">Fomentamos el trabajo en equipo, el respeto
+                        y la integridad en todas nuestras operaciones.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-ses-gray">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col lg:flex-row gap-12">
+
+                <div class="lg:w-1/2">
+                    <h3 class="text-2xl font-display font-bold text-ses-black mb-6" data-i18n="vacancies_title">Vacantes
+                        Disponibles</h3>
+                    <div class="space-y-4">
+                        <div
+                            class="bg-white p-6 rounded-sm shadow-sm border-l-4 border-ses-red hover:shadow-md transition cursor-pointer group">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-bold text-ses-black group-hover:text-ses-red transition"
+                                        data-i18n="job_1">Soldador TIG/SMAW (6G)</h4>
+                                    <p class="text-xs text-gray-500 mt-1 uppercase tracking-wide">Falcón • Tiempo
+                                        Completo</p>
+                                </div>
+                                <span
+                                    class="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded">Activo</span>
+                            </div>
+                        </div>
+                        <div
+                            class="bg-white p-6 rounded-sm shadow-sm border-l-4 border-ses-red hover:shadow-md transition cursor-pointer group">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-bold text-ses-black group-hover:text-ses-red transition"
+                                        data-i18n="job_2">Supervisor HSE (Seguridad)</h4>
+                                    <p class="text-xs text-gray-500 mt-1 uppercase tracking-wide">Sitio/Campo • Por
+                                        Proyecto</p>
+                                </div>
+                                <span
+                                    class="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded">Activo</span>
+                            </div>
+                        </div>
+                        <div
+                            class="bg-white p-6 rounded-sm shadow-sm border-l-4 border-gray-300 hover:shadow-md transition cursor-pointer group opacity-75">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-bold text-ses-black group-hover:text-ses-red transition"
+                                        data-i18n="job_3">Ingeniero Mecánico Junior</h4>
+                                    <p class="text-xs text-gray-500 mt-1 uppercase tracking-wide">Oficina • Pasantía</p>
+                                </div>
+                                <span
+                                    class="bg-gray-200 text-gray-600 text-xs font-bold px-2 py-1 rounded">Cerrado</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/2">
+                    <div class="bg-white p-8 rounded-sm shadow-xl">
+                        <h3 class="text-xl font-display font-bold text-ses-black mb-2" data-i18n="apply_title">Envía tu
+                            Currículum</h3>
+                        <p class="text-gray-500 text-xs mb-6" data-i18n="apply_desc">Déjanos tus datos y te
+                            contactaremos para futuras oportunidades.</p>
+
+                        <form action="https://formspree.io/f/TU_ID_AQUI" method="POST" class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-500 uppercase mb-1"
+                                    data-i18n="lbl_name">Nombre Completo</label>
+                                <input type="text" name="name"
+                                    class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-ses-red transition"
+                                    required>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-500 uppercase mb-1"
+                                        data-i18n="lbl_phone">Teléfono</label>
+                                    <input type="tel" name="phone"
+                                        class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-ses-red transition">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-500 uppercase mb-1"
+                                        data-i18n="lbl_city">Ciudad</label>
+                                    <input type="text" name="city"
+                                        class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-ses-red transition">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-500 uppercase mb-1"
+                                    data-i18n="lbl_prof">Profesión / Oficio</label>
+                                <input type="text" name="profession"
+                                    class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-ses-red transition"
+                                    placeholder="Ej: Soldador, Ayudante, Ing...">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-500 uppercase mb-1"
+                                    data-i18n="lbl_link">Enlace a LinkedIn / CV</label>
+                                <input type="url" name="linkedin"
+                                    class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-ses-red transition"
+                                    placeholder="https://...">
+                            </div>
+
+                            <button type="submit"
+                                class="w-full bg-ses-black text-white font-bold py-3 mt-4 hover:bg-ses-red transition uppercase tracking-widest text-xs"
+                                data-i18n="btn_apply">
+                                Enviar Postulación
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-ses-black text-white pt-16 pb-8 border-t border-gray-800 text-sm">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div class="col-span-1">
+                <div class="flex items-center gap-2 mb-6">
+                    <img src="logo.png" alt="Logo SES Footer" class="h-8 w-auto grayscale opacity-80">
+                    <span class="font-display font-black text-xl">SES C.A.</span>
+                </div>
+                <p class="text-gray-500 leading-relaxed" data-i18n="footer_desc">Especialistas en soldadura industrial y
+                    montaje mecánico. Calidad ASME y seguridad certificada.</p>
+            </div>
+            <div>
+                <h4 class="font-bold uppercase tracking-widest mb-6 text-gray-300 text-xs" data-i18n="nav_about">Empresa
+                </h4>
+                <ul class="space-y-3 text-gray-500">
+                    <li><a href="index.html" class="hover:text-ses-red transition" data-i18n="nav_home">Inicio</a></li>
+                    <li><a href="about.html" class="hover:text-ses-red transition" data-i18n="nav_about">Nosotros</a>
+                    </li>
+                    <li><a href="services.html" class="hover:text-ses-red transition"
+                            data-i18n="nav_services">Servicios</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold uppercase tracking-widest mb-6 text-gray-300 text-xs" data-i18n="nav_services">
+                    Servicios</h4>
+                <ul class="space-y-3 text-gray-500">
+                    <li><a href="#" class="hover:text-ses-red transition">Soldadura TIG/MIG</a></li>
+                    <li><a href="#" class="hover:text-ses-red transition" data-i18n="footer_maint">Mantenimiento</a>
+                    </li>
+                    <li><a href="#" class="hover:text-ses-red transition" data-i18n="footer_fab">Fabricación</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold uppercase tracking-widest mb-6 text-gray-300 text-xs" data-i18n="nav_contact">
+                    Contacto</h4>
+                <ul class="space-y-3 text-gray-500">
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-phone text-ses-red"></i> +58 269 000 0000
+                    </li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-envelope text-ses-red"></i> info@sesca.com
+                    </li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-location-dot text-ses-red"></i> Falcón,
+                        Venezuela</li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 pt-8 text-center text-gray-600 text-xs">
+            <p>© 2026 Servicios Especializados en Soldadura C.A. (SES C.A.) - <span data-i18n="rights">Todos los
+                    derechos reservados.</span></p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, offset: 50, duration: 800 });
+
+        // === TRADUCCIONES ===
+        const translations = {
+            es: {
+                tagline_logo: "Servicios Especializados", nav_home: "Inicio", nav_about: "Nosotros", nav_services: "Servicios", nav_careers: "Empleo", nav_contact: "Cotizar",
+                hero_tag: "Únete al Equipo", hero_title: "Construye tu <br>Carrera", hero_desc: "Buscamos talento comprometido con la excelencia técnica y la seguridad industrial. Únete a una empresa líder.",
+                why_title: "¿Por qué SES C.A.?",
+                ben_1_title: "Seguridad Primero", ben_1_desc: "Trabajamos bajo los más altos estándares de seguridad industrial (QHSE) para proteger a nuestro personal.",
+                ben_2_title: "Crecimiento Profesional", ben_2_desc: "Planes de carrera y formación continua en nuevas tecnologías de soldadura y montaje.",
+                ben_3_title: "Buen Ambiente", ben_3_desc: "Fomentamos el trabajo en equipo, el respeto y la integridad en todas nuestras operaciones.",
+                vacancies_title: "Vacantes Disponibles", job_1: "Soldador TIG/SMAW (6G)", job_2: "Supervisor HSE (Seguridad)", job_3: "Ingeniero Mecánico Junior",
+                apply_title: "Envía tu Currículum", apply_desc: "Déjanos tus datos y te contactaremos para futuras oportunidades.",
+                lbl_name: "Nombre Completo", lbl_phone: "Teléfono", lbl_city: "Ciudad", lbl_prof: "Profesión / Oficio", lbl_link: "Enlace a LinkedIn / CV", btn_apply: "Enviar Postulación",
+                footer_desc: "Especialistas en soldadura industrial. Calidad ASME.", footer_maint: "Mantenimiento", footer_fab: "Fabricación", rights: "Todos los derechos reservados."
+            },
+            en: {
+                tagline_logo: "Industrial Services", nav_home: "Home", nav_about: "About Us", nav_services: "Services", nav_careers: "Careers", nav_contact: "Get Quote",
+                hero_tag: "Join the Team", hero_title: "Build Your <br>Career", hero_desc: "We are looking for talent committed to technical excellence and industrial safety. Join a leading company.",
+                why_title: "Why SES C.A.?",
+                ben_1_title: "Safety First", ben_1_desc: "We work under the highest industrial safety standards (QHSE) to protect our personnel.",
+                ben_2_title: "Professional Growth", ben_2_desc: "Career plans and continuous training in new welding and assembly technologies.",
+                ben_3_title: "Great Environment", ben_3_desc: "We foster teamwork, respect, and integrity in all our operations.",
+                vacancies_title: "Open Positions", job_1: "TIG/SMAW Welder (6G)", job_2: "HSE Supervisor", job_3: "Junior Mechanical Engineer",
+                apply_title: "Send Your Resume", apply_desc: "Leave your details and we will contact you for future opportunities.",
+                lbl_name: "Full Name", lbl_phone: "Phone", lbl_city: "City", lbl_prof: "Profession / Trade", lbl_link: "LinkedIn / CV Link", btn_apply: "Submit Application",
+                footer_desc: "Industrial welding specialists. ASME Quality.", footer_maint: "Maintenance", footer_fab: "Fabrication", rights: "All rights reserved."
+            },
+            pt: {
+                tagline_logo: "Serviços Industriais", nav_home: "Início", nav_about: "Nós", nav_services: "Serviços", nav_careers: "Carreiras", nav_contact: "Cotação",
+                hero_tag: "Junte-se à Equipe", hero_title: "Construa sua <br>Carreira", hero_desc: "Procuramos talentos comprometidos com a excelência técnica e segurança industrial. Junte-se a uma empresa líder.",
+                why_title: "Por que SES C.A.?",
+                ben_1_title: "Segurança Primeiro", ben_1_desc: "Trabalhamos sob os mais altos padrões de segurança industrial (QHSE) para proteger nosso pessoal.",
+                ben_2_title: "Crescimento Profissional", ben_2_desc: "Planos de carreira e treinamento contínuo em novas tecnologias de soldagem.",
+                ben_3_title: "Bom Ambiente", ben_3_desc: "Fomentamos o trabalho em equipe, o respeito e a integridade em todas as operações.",
+                vacancies_title: "Vagas Disponíveis", job_1: "Soldador TIG/SMAW (6G)", job_2: "Supervisor HSE", job_3: "Engenheiro Mecânico Júnior",
+                apply_title: "Envie seu Currículo", apply_desc: "Deixe seus dados e entraremos em contato para futuras oportunidades.",
+                lbl_name: "Nome Completo", lbl_phone: "Telefone", lbl_city: "Cidade", lbl_prof: "Profissão", lbl_link: "Link LinkedIn / CV", btn_apply: "Enviar Inscrição",
+                footer_desc: "Especialistas em soldagem. Qualidade ASME.", footer_maint: "Manutenção", footer_fab: "Fabricação", rights: "Todos os direitos reservados."
+            },
+            ru: {
+                tagline_logo: "Спец. Услуги", nav_home: "Главная", nav_about: "О нас", nav_services: "Услуги", nav_careers: "Карьера", nav_contact: "Запрос",
+                hero_tag: "Вступайте в команду", hero_title: "Постройте <br>Карьеру", hero_desc: "Мы ищем таланты, преданные техническому совершенству и безопасности. Присоединяйтесь к лидеру.",
+                why_title: "Почему SES C.A.?",
+                ben_1_title: "Безопасность", ben_1_desc: "Мы работаем по высочайшим стандартам безопасности (QHSE) для защиты персонала.",
+                ben_2_title: "Проф. Рост", ben_2_desc: "Карьерные планы и постоянное обучение новым технологиям сварки.",
+                ben_3_title: "Атмосфера", ben_3_desc: "Мы поощряем командную работу, уважение и честность во всех операциях.",
+                vacancies_title: "Вакансии", job_1: "Сварщик TIG/SMAW (6G)", job_2: "Инспектор ОТиТБ", job_3: "Мл. Инженер-механик",
+                apply_title: "Отправить резюме", apply_desc: "Оставьте свои данные, и мы свяжемся с вами.",
+                lbl_name: "ФИО", lbl_phone: "Телефон", lbl_city: "Город", lbl_prof: "Профессия", lbl_link: "Ссылка на резюме", btn_apply: "Отправить",
+                footer_desc: "Спец. по сварке. Качество ASME.", footer_maint: "Обслуживание", footer_fab: "Производство", rights: "Все права защищены."
+            },
+            cn: {
+                tagline_logo: "工业服务", nav_home: "首页", nav_about: "关于", nav_services: "服务", nav_careers: "招聘", nav_contact: "报价",
+                hero_tag: "加入团队", hero_title: "建立您的 <br>职业生涯", hero_desc: "我们正在寻找致力于卓越技术和工业安全的人才。加入行业领先企业。",
+                why_title: "为什么选择 SES C.A.?",
+                ben_1_title: "安全第一", ben_1_desc: "我们在最高工业安全标准 (QHSE) 下工作，以保护我们的员工。",
+                ben_2_title: "职业发展", ben_2_desc: "职业规划以及焊接和装配新技术的持续培训。",
+                ben_3_title: "良好环境", ben_3_desc: "我们在所有业务中提倡团队合作、尊重和诚信。",
+                vacancies_title: "现有职位", job_1: "TIG/SMAW 焊工 (6G)", job_2: "HSE 主管 (安全)", job_3: "初级机械工程师",
+                apply_title: "发送您的简历", apply_desc: "留下您的信息，我们将联系您提供未来的机会。",
+                lbl_name: "全名", lbl_phone: "电话", lbl_city: "城市", lbl_prof: "职业", lbl_link: "简历链接", btn_apply: "提交申请",
+                footer_desc: "焊接专家。ASME 质量。", footer_maint: "维护", footer_fab: "制造", rights: "版权所有。"
+            }
+        };
+
+        function changeLanguage(lang) {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            document.getElementById('current-lang').innerText = lang.toUpperCase();
+        }
+
+        // Menú Móvil Logic
+        const mobileBtn = document.getElementById('mobile-btn');
+        const closeMenu = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        }
+
+        mobileBtn.addEventListener('click', toggleMenu);
+        closeMenu.addEventListener('click', toggleMenu);
+    </script>
+</body>
+
+</html>
